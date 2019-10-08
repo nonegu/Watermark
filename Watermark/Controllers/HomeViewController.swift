@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var categoryCollectionView: UICollectionView!
+    @IBOutlet weak var itemTableView: UITableView!
     
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -22,6 +23,9 @@ class HomeViewController: UIViewController {
         categoryCollectionView.register(UINib(nibName: CategoryCell.defaultReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.defaultReuseIdentifier)
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
+        
+        itemTableView.delegate = self
+        itemTableView.dataSource = self
     }
     
     // MARK: Actions
@@ -53,6 +57,30 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 200)
+    }
+    
+    
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = itemTableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        cell.textLabel?.text = "New Item"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.accessoryType == .checkmark {
+            cell?.accessoryType = .none
+        } else {
+            cell?.accessoryType = .checkmark
+        }
     }
     
     
