@@ -90,7 +90,6 @@
                                             <color key="titleColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="moreCategoriesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yqu-dC-Q3i"/>
                                             <action selector="moreTodosPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFk-CJ-xc8"/>
                                         </connections>
                                     </button>
