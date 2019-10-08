@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
     }
     
     func setupTableView() {
+        itemTableView.register(UINib(nibName: AddItemCell.defaultReuseIdentifier, bundle: nil), forCellReuseIdentifier: AddItemCell.defaultReuseIdentifier)
         itemTableView.delegate = self
         itemTableView.dataSource = self
     }

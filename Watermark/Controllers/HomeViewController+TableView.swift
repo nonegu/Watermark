@@ -10,14 +10,27 @@ import UIKit
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if section == 0 {
+            return 1
+        } else {
+            return 10
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = itemTableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        cell.textLabel?.text = "New Item"
-        return cell
+        if indexPath.section == 0 {
+            let cell = itemTableView.dequeueReusableCell(withIdentifier: AddItemCell.defaultReuseIdentifier, for: indexPath) as! AddItemCell
+            return cell
+        } else {
+            let cell = itemTableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+            cell.textLabel?.text = "New Item"
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -30,9 +43,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let edit = editAction(at: indexPath)
-        let delete = deleteAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [delete, edit])
+        if indexPath.section == 0 {
+            return nil
+        } else {
+            let edit = editAction(at: indexPath)
+            let delete = deleteAction(at: indexPath)
+            return UISwipeActionsConfiguration(actions: [delete, edit])
+        }
     }
 
     func editAction(at indexPath: IndexPath) -> UIContextualAction {
@@ -55,6 +72,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         action.backgroundColor = UIColor.red
 
         return action
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
 
 
