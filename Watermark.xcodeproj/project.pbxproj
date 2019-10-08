@@ -13,6 +13,8 @@
 		B6609E9A234CA603007C21A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6609E99234CA603007C21A9 /* Assets.xcassets */; };
 		B6609E9D234CA603007C21A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6609E9B234CA603007C21A9 /* LaunchScreen.storyboard */; };
 		B6609EA7234CA861007C21A9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609E94234CA602007C21A9 /* HomeViewController.swift */; };
+		B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EA8234CAB9E007C21A9 /* CategoryCell.swift */; };
+		B6609EAB234CAB9E007C21A9 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EA9234CAB9E007C21A9 /* CategoryCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B6609E99234CA603007C21A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6609E9C234CA603007C21A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6609E9E234CA603007C21A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6609EA8234CAB9E007C21A9 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		B6609EA9234CAB9E007C21A9 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			children = (
 				B6609E96234CA602007C21A9 /* Main.storyboard */,
 				B6609E9B234CA603007C21A9 /* LaunchScreen.storyboard */,
+				B6609EA8234CAB9E007C21A9 /* CategoryCell.swift */,
+				B6609EA9234CAB9E007C21A9 /* CategoryCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +158,7 @@
 				B6609E9D234CA603007C21A9 /* LaunchScreen.storyboard in Resources */,
 				B6609E9A234CA603007C21A9 /* Assets.xcassets in Resources */,
 				B6609E98234CA602007C21A9 /* Main.storyboard in Resources */,
+				B6609EAB234CAB9E007C21A9 /* CategoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +172,7 @@
 				B6609E91234CA602007C21A9 /* AppDelegate.swift in Sources */,
 				B6609E93234CA602007C21A9 /* SceneDelegate.swift in Sources */,
 				B6609EA7234CA861007C21A9 /* HomeViewController.swift in Sources */,
+				B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
