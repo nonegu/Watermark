@@ -34,11 +34,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        if cell?.accessoryType == .checkmark {
-            cell?.accessoryType = .none
+        if indexPath.section == 0 {
+            print("Add new todo pressed")
         } else {
-            cell?.accessoryType = .checkmark
+            let cell = tableView.cellForRow(at: indexPath)
+            if cell?.accessoryType == .checkmark {
+                cell?.accessoryType = .none
+            } else {
+                cell?.accessoryType = .checkmark
+            }
         }
     }
     
