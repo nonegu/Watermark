@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0c7-vY-woQ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="74" width="375" height="220"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="yCe-vH-e0D"/>
+                                    <constraint firstAttribute="height" constant="220" id="yCe-vH-e0D"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FkA-7b-JMl">
                                     <size key="itemSize" width="50" height="50"/>
@@ -39,12 +39,41 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jua-FI-kUb">
+                                <rect key="frame" x="16" y="44" width="343" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJ2-tA-rDw">
+                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="G1U-GO-nri"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5O3-OJ-a3e">
+                                        <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="zoK-bW-0aC"/>
+                                        </constraints>
+                                        <state key="normal" title="more">
+                                            <color key="titleColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="moreCategoriesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6ST-al-0lm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Jua-FI-kUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1j3-gA-of7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0c7-vY-woQ" secondAttribute="trailing" id="69t-G1-eza"/>
+                            <constraint firstItem="0c7-vY-woQ" firstAttribute="top" secondItem="Jua-FI-kUb" secondAttribute="bottom" id="72I-Eh-VkB"/>
                             <constraint firstItem="0c7-vY-woQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cbb-dg-58d"/>
-                            <constraint firstItem="0c7-vY-woQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fKR-dZ-qQw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jua-FI-kUb" secondAttribute="trailing" constant="16" id="gNU-eQ-5oF"/>
+                            <constraint firstItem="Jua-FI-kUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="q0E-Qw-chj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -55,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1071.2" y="112.89355322338831"/>
+            <point key="canvasLocation" x="933.60000000000002" y="65.217391304347828"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sDr-0J-afa">

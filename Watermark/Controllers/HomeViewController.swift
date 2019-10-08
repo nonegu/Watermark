@@ -23,7 +23,12 @@ class HomeViewController: UIViewController {
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
     }
-
+    
+    // MARK: Actions
+    @IBAction func moreCategoriesPressed(_ sender: UIButton) {
+        print("more categories pressed")
+    }
+    
 
 }
 
