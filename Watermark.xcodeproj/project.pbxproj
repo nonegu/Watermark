@@ -17,6 +17,7 @@
 		B6609EAB234CAB9E007C21A9 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EA9234CAB9E007C21A9 /* CategoryCell.xib */; };
 		B6609EAF234CCDA9007C21A9 /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EAD234CCDA9007C21A9 /* AddCategoryCell.swift */; };
 		B6609EB0234CCDA9007C21A9 /* AddCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EAE234CCDA9007C21A9 /* AddCategoryCell.xib */; };
+		B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B6609EA9234CAB9E007C21A9 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		B6609EAD234CCDA9007C21A9 /* AddCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
 		B6609EAE234CCDA9007C21A9 /* AddCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCategoryCell.xib; sourceTree = "<group>"; };
+		B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				B6609E94234CA602007C21A9 /* HomeViewController.swift */,
+				B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				B6609E91234CA602007C21A9 /* AppDelegate.swift in Sources */,
 				B6609E93234CA602007C21A9 /* SceneDelegate.swift in Sources */,
 				B6609EA7234CA861007C21A9 /* HomeViewController.swift in Sources */,
+				B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */,
 				B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */,
 				B6609EAF234CCDA9007C21A9 /* AddCategoryCell.swift in Sources */,
 			);

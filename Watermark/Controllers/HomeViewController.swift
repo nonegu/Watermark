@@ -93,27 +93,3 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = itemTableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        cell.textLabel?.text = "New Item"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        if cell?.accessoryType == .checkmark {
-            cell?.accessoryType = .none
-        } else {
-            cell?.accessoryType = .checkmark
-        }
-    }
-    
-    
-}
-
