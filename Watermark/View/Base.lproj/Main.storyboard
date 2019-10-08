@@ -86,6 +86,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Nk6-s6-x7i"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="more">
                                             <color key="titleColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
