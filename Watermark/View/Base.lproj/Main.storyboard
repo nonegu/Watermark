@@ -39,7 +39,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jua-FI-kUb">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jua-FI-kUb" userLabel="Categories Header Stack View">
                                 <rect key="frame" x="16" y="44" width="343" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJ2-tA-rDw">
@@ -65,14 +65,47 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="84F-9q-30t" userLabel="Todos Header Stack View">
+                                <rect key="frame" x="16" y="294" width="343" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Work" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpa-D3-ILW">
+                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Fno-W5-mEk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znZ-Yw-1Kz">
+                                        <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Nk6-s6-x7i"/>
+                                        </constraints>
+                                        <state key="normal" title="more">
+                                            <color key="titleColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="moreCategoriesPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yqu-dC-Q3i"/>
+                                            <action selector="moreTodosPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFk-CJ-xc8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="iyy-ld-wla"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Jua-FI-kUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1j3-gA-of7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="84F-9q-30t" secondAttribute="trailing" constant="16" id="4Wr-GY-LQT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0c7-vY-woQ" secondAttribute="trailing" id="69t-G1-eza"/>
                             <constraint firstItem="0c7-vY-woQ" firstAttribute="top" secondItem="Jua-FI-kUb" secondAttribute="bottom" id="72I-Eh-VkB"/>
                             <constraint firstItem="0c7-vY-woQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cbb-dg-58d"/>
+                            <constraint firstItem="84F-9q-30t" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="dIe-IA-fKZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jua-FI-kUb" secondAttribute="trailing" constant="16" id="gNU-eQ-5oF"/>
+                            <constraint firstItem="84F-9q-30t" firstAttribute="top" secondItem="0c7-vY-woQ" secondAttribute="bottom" id="oiI-jd-3VZ"/>
                             <constraint firstItem="Jua-FI-kUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="q0E-Qw-chj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

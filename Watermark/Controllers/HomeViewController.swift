@@ -29,6 +29,11 @@ class HomeViewController: UIViewController {
         print("more categories pressed")
     }
     
+    @IBAction func moreTodosPressed(_ sender: UIButton) {
+        print("more todos pressed")
+    }
+    
+    
 
 }
 
