@@ -20,6 +20,8 @@
 		B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */; };
 		B6609EB5234CE058007C21A9 /* AddItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EB3234CE058007C21A9 /* AddItemCell.swift */; };
 		B6609EB6234CE058007C21A9 /* AddItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EB4234CE058007C21A9 /* AddItemCell.xib */; };
+		B6609EB9234CE782007C21A9 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EB7234CE782007C21A9 /* ItemCell.swift */; };
+		B6609EBA234CE782007C21A9 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EB8234CE782007C21A9 /* ItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableView.swift"; sourceTree = "<group>"; };
 		B6609EB3234CE058007C21A9 /* AddItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemCell.swift; sourceTree = "<group>"; };
 		B6609EB4234CE058007C21A9 /* AddItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemCell.xib; sourceTree = "<group>"; };
+		B6609EB7234CE782007C21A9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		B6609EB8234CE782007C21A9 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 				B6609EA9234CAB9E007C21A9 /* CategoryCell.xib */,
 				B6609EAD234CCDA9007C21A9 /* AddCategoryCell.swift */,
 				B6609EAE234CCDA9007C21A9 /* AddCategoryCell.xib */,
+				B6609EB7234CE782007C21A9 /* ItemCell.swift */,
+				B6609EB8234CE782007C21A9 /* ItemCell.xib */,
 				B6609EB3234CE058007C21A9 /* AddItemCell.swift */,
 				B6609EB4234CE058007C21A9 /* AddItemCell.xib */,
 			);
@@ -182,6 +188,7 @@
 				B6609E9A234CA603007C21A9 /* Assets.xcassets in Resources */,
 				B6609EB0234CCDA9007C21A9 /* AddCategoryCell.xib in Resources */,
 				B6609E98234CA602007C21A9 /* Main.storyboard in Resources */,
+				B6609EBA234CE782007C21A9 /* ItemCell.xib in Resources */,
 				B6609EB6234CE058007C21A9 /* AddItemCell.xib in Resources */,
 				B6609EAB234CAB9E007C21A9 /* CategoryCell.xib in Resources */,
 			);
@@ -194,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6609EB9234CE782007C21A9 /* ItemCell.swift in Sources */,
 				B6609E91234CA602007C21A9 /* AppDelegate.swift in Sources */,
 				B6609E93234CA602007C21A9 /* SceneDelegate.swift in Sources */,
 				B6609EA7234CA861007C21A9 /* HomeViewController.swift in Sources */,

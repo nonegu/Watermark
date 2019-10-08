@@ -27,8 +27,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = itemTableView.dequeueReusableCell(withIdentifier: AddItemCell.defaultReuseIdentifier, for: indexPath) as! AddItemCell
             return cell
         } else {
-            let cell = itemTableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-            cell.textLabel?.text = "New Item"
+            let cell = itemTableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
             return cell
         }
     }
@@ -37,12 +36,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             print("Add new todo pressed")
         } else {
-            let cell = tableView.cellForRow(at: indexPath)
-            if cell?.accessoryType == .checkmark {
-                cell?.accessoryType = .none
-            } else {
-                cell?.accessoryType = .checkmark
-            }
+            let cell = tableView.cellForRow(at: indexPath) as! ItemCell
+            cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
         }
     }
     
