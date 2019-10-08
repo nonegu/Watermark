@@ -23,13 +23,9 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        categoryCollectionView.register(UINib(nibName: CategoryCell.defaultReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.defaultReuseIdentifier)
-        categoryCollectionView.register(UINib(nibName: AddCategoryCell.defaultReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: AddCategoryCell.defaultReuseIdentifier)
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
+        setupCollectionView()
+        setupTableView()
         
-        itemTableView.delegate = self
-        itemTableView.dataSource = self
     }
     
     // MARK: Actions
@@ -41,6 +37,17 @@ class HomeViewController: UIViewController {
         print("more todos pressed")
     }
     
+    func setupCollectionView() {
+        categoryCollectionView.register(UINib(nibName: CategoryCell.defaultReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: CategoryCell.defaultReuseIdentifier)
+        categoryCollectionView.register(UINib(nibName: AddCategoryCell.defaultReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: AddCategoryCell.defaultReuseIdentifier)
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+    }
+    
+    func setupTableView() {
+        itemTableView.delegate = self
+        itemTableView.dataSource = self
+    }
     
 
 }
