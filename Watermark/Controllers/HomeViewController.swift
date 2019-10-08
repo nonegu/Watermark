@@ -81,6 +81,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: 10, height: 200)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            categories.insert(UIColor.black, at:0)
+            DispatchQueue.main.async {
+                collectionView.reloadData()
+            }
+        }
+    }
+    
     
 }
 
