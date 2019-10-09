@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LoginViewController: UIViewController {
     
@@ -16,6 +17,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginOrRegisterButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    // MARK: Properties
+    let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +28,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginOrRegisterPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "LoginSuccess", sender: self)
+        if sender.titleLabel?.text == "Register" {
+            guard let email = emailTextField.text, let password = passwordTextField.text else {
+                print("invalid email or password")
+                return
+            }
+            let newUser = User()
+            newUser.username = email
+            newUser.password = password
+            
+            register(user: newUser)
+        }
     }
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -34,6 +48,18 @@ class LoginViewController: UIViewController {
     func setupSegmentedControlTextAttributes() {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
+    }
+    
+    func register(user: User) {
+        do {
+            try realm.write {
+                realm.add(user)
+            }
+        } catch {
+            print("Error registering user \(error)")
+        }
+        
+        performSegue(withIdentifier: "LoginSuccess", sender: self)
     }
     
     
