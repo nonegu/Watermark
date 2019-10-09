@@ -27,6 +27,10 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "LoginSuccess", sender: self)
     }
     
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        sender.selectedSegmentIndex == 0 ? loginOrRegisterButton.setTitle("Login", for: .normal) : loginOrRegisterButton.setTitle("Register", for: .normal)
+    }
+    
     func setupSegmentedControlTextAttributes() {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         segmentedControl.setTitleTextAttributes(titleTextAttributes, for: .selected)
