@@ -52,6 +52,15 @@ class HomeViewController: UIViewController {
         itemTableView.dataSource = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeToCategories" {
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            backItem.tintColor = UIColor.black
+            navigationItem.backBarButtonItem = backItem
+        }
+    }
+    
 
 }
 

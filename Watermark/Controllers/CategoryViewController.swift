@@ -20,6 +20,18 @@ class CategoryViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        setupNavBar()
+        
+    }
+    
+    func setupNavBar() {
+        let addCategoryButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
+        navigationItem.rightBarButtonItem = addCategoryButton
+        addCategoryButton.tintColor = UIColor.black
+    }
+    
+    @objc func addButtonPressed() {
+        print("addButton pressed")
     }
     
 }
