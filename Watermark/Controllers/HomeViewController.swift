@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupNavBar()
         
         setupCollectionView()
         setupTableView()
@@ -52,6 +52,12 @@ class HomeViewController: UIViewController {
         itemTableView.dataSource = self
     }
     
+    func setupNavBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutPressed))
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.black
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HomeToCategories" {
             let backItem = UIBarButtonItem()
@@ -61,6 +67,9 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @objc func logoutPressed() {
+        dismiss(animated: true, completion: nil)
+    }
 
 }
 
