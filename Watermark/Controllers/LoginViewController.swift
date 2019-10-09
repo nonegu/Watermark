@@ -38,7 +38,14 @@ class LoginViewController: UIViewController {
             newUser.username = email
             newUser.password = password
             
-            register(user: newUser)
+            let users = realm.objects(User.self)
+            if !users.contains(where: { (user) -> Bool in
+                user.username == email
+            }) {
+                register(user: newUser)
+            } else {
+                print("user already exists")
+            }
         } else {
             checkUserValidation(email: email, password: password)
         }
