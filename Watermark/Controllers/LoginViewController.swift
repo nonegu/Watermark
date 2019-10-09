@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     // MARK: Properties
     let realm = try! Realm()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +29,18 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginOrRegisterPressed(_ sender: UIButton) {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            print("invalid email or password")
+            return
+        }
         if sender.titleLabel?.text == "Register" {
-            guard let email = emailTextField.text, let password = passwordTextField.text else {
-                print("invalid email or password")
-                return
-            }
             let newUser = User()
             newUser.username = email
             newUser.password = password
             
             register(user: newUser)
+        } else {
+            checkUserValidation(email: email, password: password)
         }
     }
     
@@ -60,6 +63,24 @@ class LoginViewController: UIViewController {
         }
         
         performSegue(withIdentifier: "LoginSuccess", sender: self)
+    }
+    
+    func checkUserValidation(email: String, password: String) {
+        let users = realm.objects(User.self)
+        if users.contains(where: { (user) -> Bool in
+            user.username == email
+        }) {
+            user = users.first(where: { (user) -> Bool in
+                user.password == password
+            })
+            if user == nil {
+                print("wrong password")
+            } else {
+                performSegue(withIdentifier: "LoginSuccess", sender: self)
+            }
+        } else {
+            print("user not found")
+        }
     }
     
     
