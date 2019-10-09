@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func moreCategoriesPressed(_ sender: UIButton) {
-        print("more categories pressed")
+        performSegue(withIdentifier: "HomeToCategories", sender: self)
     }
     
     @IBAction func moreTodosPressed(_ sender: UIButton) {

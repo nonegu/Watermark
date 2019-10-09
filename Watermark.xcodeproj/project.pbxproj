@@ -22,6 +22,7 @@
 		B6609EB6234CE058007C21A9 /* AddItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EB4234CE058007C21A9 /* AddItemCell.xib */; };
 		B6609EB9234CE782007C21A9 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EB7234CE782007C21A9 /* ItemCell.swift */; };
 		B6609EBA234CE782007C21A9 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EB8234CE782007C21A9 /* ItemCell.xib */; };
+		B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		B6609EB4234CE058007C21A9 /* AddItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemCell.xib; sourceTree = "<group>"; };
 		B6609EB7234CE782007C21A9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		B6609EB8234CE782007C21A9 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				B6609E94234CA602007C21A9 /* HomeViewController.swift */,
 				B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */,
+				B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				B6609EB5234CE058007C21A9 /* AddItemCell.swift in Sources */,
 				B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */,
 				B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */,
+				B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */,
 				B6609EAF234CCDA9007C21A9 /* AddCategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
