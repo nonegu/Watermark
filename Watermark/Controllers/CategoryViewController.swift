@@ -13,6 +13,9 @@ class CategoryViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: Properties
+    var categories: [String] = ["Office", "Mall", "Gym", "Pets", "Kitchen"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +34,23 @@ class CategoryViewController: UIViewController {
     }
     
     @objc func addButtonPressed() {
-        print("addButton pressed")
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
+        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+            self.categories.append(textField.text!)
+            DispatchQueue.main.async {
+                self.collectionView.insertItems(at: [IndexPath(item: (self.categories.count - 1), section: 0)])
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { (field) in
+            textField = field
+            textField.placeholder = "e.g. Home"
+        }
+        
+        present(alert, animated: true, completion: nil)
     }
     
 }
@@ -39,12 +58,12 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.defaultReuseIdentifier, for: indexPath) as! CategoryCell
-        cell.name.text = "Office"
+        cell.name.text = categories[indexPath.row]
         return cell
     }
     
