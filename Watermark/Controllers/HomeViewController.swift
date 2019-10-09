@@ -107,7 +107,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.section == 0 {
             categories.insert(UIColor.black, at:0)
             DispatchQueue.main.async {
-                collectionView.reloadData()
+                collectionView.insertItems(at: [IndexPath(item: 0, section: 1)])
             }
         }
     }
