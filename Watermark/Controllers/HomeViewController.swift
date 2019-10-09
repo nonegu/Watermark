@@ -78,7 +78,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.backgroundColor = categories[indexPath.row]
             cell.name.text = "Home"
             cell.completedItemsLabel.text = "1/3 Completed"
-            cell.layer.cornerRadius = 5
             return cell
         }
     }
