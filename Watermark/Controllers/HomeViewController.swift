@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Properties
     var categories: [UIColor] = [#colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)]
+    var dueDates: [Date] = [Date().addingTimeInterval(30 * 3600), Date().addingTimeInterval(21 * 3600), Date().addingTimeInterval(100 * 3600)]
     
     // MARK: Lifecycle Methods
     override func viewDidLoad() {

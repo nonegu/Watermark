@@ -13,6 +13,7 @@ class ItemCell: UITableViewCell {
     // MARK: Outlets
     @IBOutlet weak var itemTextLabel: UILabel!
     @IBOutlet weak var checkmarkImageView: UIImageView!
+    @IBOutlet weak var dueDate: UILabel!
     
     // MARK: Properties
     static var defaultReuseIdentifier: String {

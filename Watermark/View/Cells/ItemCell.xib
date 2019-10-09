@@ -9,42 +9,51 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="KGk-i7-Jjw" customClass="ItemCell" customModule="Watermark" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="60" id="KGk-i7-Jjw" customClass="ItemCell" customModule="Watermark" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ib-rc-iHu" userLabel="ItemTextLabel">
-                        <rect key="frame" x="16" y="12.5" width="260" height="19"/>
+                        <rect key="frame" x="16" y="15" width="260" height="19"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ATc-lD-6NN" userLabel="Checkmark">
-                        <rect key="frame" x="284" y="11" width="24" height="22"/>
+                        <rect key="frame" x="284" y="19" width="24" height="22"/>
                         <color key="tintColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="3fq-bb-sqk"/>
                             <constraint firstAttribute="height" constant="24" id="gjg-Y8-xRC"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tw-w9-0OY">
+                        <rect key="frame" x="16" y="34" width="34.5" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="1tw-w9-0OY" firstAttribute="leading" secondItem="1Ib-rc-iHu" secondAttribute="leading" id="61z-qR-FZ8"/>
                     <constraint firstItem="ATc-lD-6NN" firstAttribute="leading" secondItem="1Ib-rc-iHu" secondAttribute="trailing" constant="8" id="Co3-Sb-hWW"/>
                     <constraint firstItem="ATc-lD-6NN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="N6X-Em-11N"/>
                     <constraint firstItem="1Ib-rc-iHu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="OHt-RW-BCy"/>
-                    <constraint firstItem="1Ib-rc-iHu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="R1J-Bk-IhP"/>
+                    <constraint firstItem="1Ib-rc-iHu" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="4" id="R1J-Bk-IhP"/>
+                    <constraint firstItem="1tw-w9-0OY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="4" id="aqS-R8-hZ2"/>
                     <constraint firstAttribute="trailing" secondItem="ATc-lD-6NN" secondAttribute="trailing" constant="12" id="xjw-Vf-ou5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="checkmarkImageView" destination="ATc-lD-6NN" id="m77-JE-Y20"/>
+                <outlet property="dueDate" destination="1tw-w9-0OY" id="EXy-XN-ex4"/>
                 <outlet property="itemTextLabel" destination="1Ib-rc-iHu" id="Kqw-B6-lwj"/>
             </connections>
-            <point key="canvasLocation" x="74" y="-3"/>
+            <point key="canvasLocation" x="73.913043478260875" y="2.0089285714285712"/>
         </tableViewCell>
     </objects>
     <resources>
