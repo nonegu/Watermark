@@ -24,6 +24,7 @@
 		B6609EB9234CE782007C21A9 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609EB7234CE782007C21A9 /* ItemCell.swift */; };
 		B6609EBA234CE782007C21A9 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EB8234CE782007C21A9 /* ItemCell.xib */; };
 		B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */; };
+		B6AC2B9D234E136600F65869 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2B9C234E136600F65869 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		B6609EB7234CE782007C21A9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		B6609EB8234CE782007C21A9 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		B6AC2B9C234E136600F65869 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */,
 				B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */,
 				B64351CD234E01BE00160A68 /* AddItemViewController.swift */,
+				B6AC2B9C234E136600F65869 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */,
 				B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */,
 				B6609EAF234CCDA9007C21A9 /* AddCategoryCell.swift in Sources */,
+				B6AC2B9D234E136600F65869 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
