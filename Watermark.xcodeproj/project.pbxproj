@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,9 @@
 		B6609EBA234CE782007C21A9 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6609EB8234CE782007C21A9 /* ItemCell.xib */; };
 		B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */; };
 		B6AC2B9D234E136600F65869 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2B9C234E136600F65869 /* LoginViewController.swift */; };
+		B6AC2B9F234E240900F65869 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2B9E234E240900F65869 /* User.swift */; };
+		B6AC2BA1234E248800F65869 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2BA0234E248800F65869 /* Item.swift */; };
+		B6AC2BA3234E24E400F65869 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2BA2234E24E400F65869 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		B6609EB8234CE782007C21A9 /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		B6AC2B9C234E136600F65869 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B6AC2B9E234E240900F65869 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B6AC2BA0234E248800F65869 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B6AC2BA2234E24E400F65869 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E4BD0044BEA12DA7CF5AA6A8 /* Pods_Watermark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Watermark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,7 +86,6 @@
 				4099EE48AC772AE56C9A81CC /* Pods-Watermark.debug.xcconfig */,
 				8C4E74A1D30B49E09C92DB83 /* Pods-Watermark.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -119,6 +124,7 @@
 		B6609EA4234CA6AA007C21A9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B6AC2BA4234E268A00F65869 /* Data */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,11 +142,11 @@
 		B6609EA6234CA6BA007C21A9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B6AC2B9C234E136600F65869 /* LoginViewController.swift */,
 				B6609E94234CA602007C21A9 /* HomeViewController.swift */,
 				B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */,
 				B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */,
 				B64351CD234E01BE00160A68 /* AddItemViewController.swift */,
-				B6AC2B9C234E136600F65869 /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -158,6 +164,16 @@
 				B6609EB4234CE058007C21A9 /* AddItemCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B6AC2BA4234E268A00F65869 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B6AC2B9E234E240900F65869 /* User.swift */,
+				B6AC2BA2234E24E400F65869 /* Category.swift */,
+				B6AC2BA0234E248800F65869 /* Item.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,10 +302,13 @@
 				B6609EB5234CE058007C21A9 /* AddItemCell.swift in Sources */,
 				B64351CE234E01BE00160A68 /* AddItemViewController.swift in Sources */,
 				B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */,
+				B6AC2BA1234E248800F65869 /* Item.swift in Sources */,
 				B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */,
+				B6AC2B9F234E240900F65869 /* User.swift in Sources */,
 				B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */,
 				B6609EAF234CCDA9007C21A9 /* AddCategoryCell.swift in Sources */,
 				B6AC2B9D234E136600F65869 /* LoginViewController.swift in Sources */,
+				B6AC2BA3234E24E400F65869 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
