@@ -37,6 +37,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             print("Add new todo pressed")
+            performSegue(withIdentifier: "HomeToAddItem", sender: self)
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! ItemCell
             cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden

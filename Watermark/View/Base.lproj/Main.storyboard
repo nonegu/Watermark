@@ -133,6 +133,7 @@
                         <outlet property="categoryCollectionView" destination="0c7-vY-woQ" id="vJi-gd-Gss"/>
                         <outlet property="itemTableView" destination="gJf-zK-PuJ" id="VAI-bO-6zv"/>
                         <segue destination="Ug8-aa-jXT" kind="show" identifier="HomeToCategories" id="09T-Oq-Gxb"/>
+                        <segue destination="L6H-KK-3Ow" kind="presentation" identifier="HomeToAddItem" id="h02-0K-7Zk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -184,7 +185,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waD-Ks-6UQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1829.5999999999999" y="-35.532233883058474"/>
+            <point key="canvasLocation" x="1830" y="-192"/>
+        </scene>
+        <!--Add Item View Controller-->
+        <scene sceneID="zwP-XH-g30">
+            <objects>
+                <viewController id="L6H-KK-3Ow" customClass="AddItemViewController" customModule="Watermark" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pcN-SC-bkJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sk-vf-rIr">
+                                <rect key="frame" x="16" y="16" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="L6H-KK-3Ow" eventType="touchUpInside" id="7C5-8x-IFz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8sk-vf-rIr" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="6Re-cA-Ua0"/>
+                            <constraint firstItem="8sk-vf-rIr" firstAttribute="top" secondItem="b7i-Og-ZhF" secondAttribute="top" constant="16" id="ISS-DK-itg"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" secondItem="8sk-vf-rIr" secondAttribute="trailing" constant="311" id="pd2-hL-aWl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="b7i-Og-ZhF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bpx-eZ-u29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="484"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sDr-0J-afa">

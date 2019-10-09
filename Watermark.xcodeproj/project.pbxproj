@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B64351CE234E01BE00160A68 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64351CD234E01BE00160A68 /* AddItemViewController.swift */; };
 		B6609E91234CA602007C21A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609E90234CA602007C21A9 /* AppDelegate.swift */; };
 		B6609E93234CA602007C21A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609E92234CA602007C21A9 /* SceneDelegate.swift */; };
 		B6609E98234CA602007C21A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6609E96234CA602007C21A9 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B64351CD234E01BE00160A68 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		B6609E8D234CA602007C21A9 /* Watermark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watermark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6609E90234CA602007C21A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6609E92234CA602007C21A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				B6609E94234CA602007C21A9 /* HomeViewController.swift */,
 				B6609EB1234CDCBF007C21A9 /* HomeViewController+TableView.swift */,
 				B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */,
+				B64351CD234E01BE00160A68 /* AddItemViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				B6609E93234CA602007C21A9 /* SceneDelegate.swift in Sources */,
 				B6609EA7234CA861007C21A9 /* HomeViewController.swift in Sources */,
 				B6609EB5234CE058007C21A9 /* AddItemCell.swift in Sources */,
+				B64351CE234E01BE00160A68 /* AddItemViewController.swift in Sources */,
 				B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */,
 				B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */,
 				B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */,
