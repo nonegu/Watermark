@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CategoryViewController: UIViewController {
     
@@ -14,7 +15,9 @@ class CategoryViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: Properties
-    var categories: [String] = ["Office", "Mall", "Gym", "Pets", "Kitchen"]
+    let realm = try! Realm()
+    var user: User?
+    var categories: Results<Category>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +27,7 @@ class CategoryViewController: UIViewController {
         collectionView.dataSource = self
         
         setupNavBar()
-        
+        loadCategories()
     }
     
     func setupNavBar() {
@@ -33,13 +36,28 @@ class CategoryViewController: UIViewController {
         addCategoryButton.tintColor = UIColor.black
     }
     
+    func loadCategories() {
+        categories = user?.categories.sorted(byKeyPath: "name", ascending: true)
+        collectionView.reloadData()
+    }
+    
     @objc func addButtonPressed() {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            self.categories.append(textField.text!)
-            DispatchQueue.main.async {
-                self.collectionView.insertItems(at: [IndexPath(item: (self.categories.count - 1), section: 0)])
+            if let currentUser = self.user {
+                do {
+                    try self.realm.write {
+                        let newCategory = Category()
+                        newCategory.name = textField.text!
+                        currentUser.categories.append(newCategory)
+                    }
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                } catch {
+                    self.displayAlert(title: "Save Error", with: error.localizedDescription)
+                }
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -58,12 +76,12 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return categories?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.defaultReuseIdentifier, for: indexPath) as! CategoryCell
-        cell.name.text = categories[indexPath.row]
+        cell.name.text = categories?[indexPath.row].name
         return cell
     }
     

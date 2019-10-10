@@ -32,6 +32,12 @@ class HomeViewController: UIViewController {
         loadCategories()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        categoryCollectionView.reloadData()
+        itemTableView.reloadData()
+    }
+    
     // MARK: Actions
     @IBAction func moreCategoriesPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "HomeToCategories", sender: self)
@@ -72,6 +78,9 @@ class HomeViewController: UIViewController {
             backItem.title = ""
             backItem.tintColor = UIColor.black
             navigationItem.backBarButtonItem = backItem
+            
+            let categoryVC = segue.destination as! CategoryViewController
+            categoryVC.user = user
         }
     }
     
