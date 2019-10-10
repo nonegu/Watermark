@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     let realm = try! Realm()
     var user: User?
     var categories: Results<Category>?
+    var todaysItems: Results<Item>?
     var dueDates: [Date] = [Date().addingTimeInterval(30 * 3600), Date().addingTimeInterval(21 * 3600), Date().addingTimeInterval(100 * 3600)]
     
     // MARK: Lifecycle Methods
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
         setupCollectionView()
         setupTableView()
         loadCategories()
+        loadTodaysItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +72,11 @@ class HomeViewController: UIViewController {
     func loadCategories() {
         categories = user?.categories.sorted(byKeyPath: "name", ascending: true)
         categoryCollectionView.reloadData()
+    }
+    
+    func loadTodaysItems() {
+        todaysItems = realm.objects(Item.self).filter("dueDate <= %@", Date().addingTimeInterval(24*3600))
+        print(todaysItems)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

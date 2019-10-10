@@ -18,7 +18,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return 3
+            return todaysItems?.count ?? 0
         }
     }
     
@@ -28,7 +28,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = itemTableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
-            let dueHours = (dueDates[indexPath.row].timeIntervalSinceNow / 3600)
+            let dueHours = ((todaysItems?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
+            cell.itemTextLabel.text = todaysItems?[indexPath.row].title
             cell.dueDate.text = "Due in: \(round(dueHours)) hours"
             return cell
         }
