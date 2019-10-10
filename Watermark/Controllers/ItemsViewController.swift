@@ -19,6 +19,13 @@ class ItemsViewController: UIViewController {
     var category: Category?
     var user: User?
     var items: Results<Item>?
+    // defining filtered items to show in sections
+    lazy var todaysItems = items?.filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
+    lazy var tomorrowsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(48*3600)).sorted(byKeyPath: "dueDate")
+    lazy var weeksItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(48*3600)).filter("dueDate <= %@", Date().addingTimeInterval(7*24*3600)).sorted(byKeyPath: "dueDate")
+    lazy var monthsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(7*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(30*24*3600)).sorted(byKeyPath: "dueDate")
+    lazy var yearsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(30*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(365*24*3600)).sorted(byKeyPath: "dueDate")
+    lazy var otherItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(365*24*3600)).sorted(byKeyPath: "dueDate")
     
     // MARK: Lifecycle methods
     override func viewDidLoad() {
@@ -63,31 +70,39 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            let todaysItems = items?.filter("dueDate <= %@", Date().addingTimeInterval(24*3600))
             return todaysItems?.count ?? 0
         } else if section == 1 {
-            let tomorrowsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(48*3600))
             return tomorrowsItems?.count ?? 0
         } else if section == 2 {
-            let weeksItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(48*3600)).filter("dueDate <= %@", Date().addingTimeInterval(7*24*3600))
             return weeksItems?.count ?? 0
         } else if section == 3 {
-            let monthsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(7*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(30*24*3600))
             return monthsItems?.count ?? 0
         } else if section == 4 {
-            let yearsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(30*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(365*24*3600))
             return yearsItems?.count ?? 0
         } else {
-            let otherItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(365*24*3600))
             return otherItems?.count ?? 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
-        cell.itemTextLabel.text = items?[indexPath.section].title
-        let dueHours = ((items?[indexPath.section].dueDate.timeIntervalSinceNow)! / 3600)
-        cell.checkmarkImageView.isHidden = !(items?[indexPath.section].done)!
+        var cellData = items
+        if indexPath.section == 0 {
+            cellData = todaysItems
+        } else if indexPath.section == 1 {
+            cellData = tomorrowsItems
+        } else if indexPath.section == 2 {
+            cellData = weeksItems
+        } else if indexPath.section == 3 {
+            cellData = monthsItems
+        } else if indexPath.section == 4 {
+            cellData = yearsItems
+        } else {
+            cellData = otherItems
+        }
+        cell.itemTextLabel.text = cellData?[indexPath.row].title
+        let dueHours = ((cellData?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
+        cell.checkmarkImageView.isHidden = !(cellData?[indexPath.row].done)!
         cell.dueDate.text = "Due in: \(round(dueHours)) hours"
         return cell
     }
