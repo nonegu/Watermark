@@ -280,6 +280,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b7i-Og-ZhF"/>
                     </view>
+                    <connections>
+                        <outlet property="dueDate" destination="8pe-Jn-xvq" id="PfJ-n1-n2g"/>
+                        <outlet property="itemCategory" destination="AoN-Y8-Eop" id="zdC-5v-h65"/>
+                        <outlet property="itemTitle" destination="oKM-2W-CbY" id="opB-ok-wWO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bpx-eZ-u29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
