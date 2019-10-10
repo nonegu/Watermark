@@ -128,7 +128,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Watermark" id="Q5c-dg-iH6"/>
+                    <navigationItem key="navigationItem" title="Watermark" largeTitleDisplayMode="always" id="Q5c-dg-iH6"/>
                     <connections>
                         <outlet property="categoryCollectionView" destination="0c7-vY-woQ" id="vJi-gd-Gss"/>
                         <outlet property="itemTableView" destination="gJf-zK-PuJ" id="VAI-bO-6zv"/>
@@ -179,7 +179,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ySX-NM-K2H"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Categories" id="TGu-3l-IvD"/>
+                    <navigationItem key="navigationItem" title="Categories" largeTitleDisplayMode="always" id="TGu-3l-IvD"/>
                     <connections>
                         <outlet property="collectionView" destination="Fj6-sU-YXZ" id="vGu-A3-Fes"/>
                         <segue destination="IvC-0s-m8i" kind="show" identifier="CategoriesToItems" id="Kgg-hj-5we"/>
@@ -189,21 +189,46 @@
             </objects>
             <point key="canvasLocation" x="1830" y="-192"/>
         </scene>
-        <!--Items View Controller-->
+        <!--Dummy-->
         <scene sceneID="XBw-ye-6s2">
             <objects>
                 <viewController id="IvC-0s-m8i" customClass="ItemsViewController" customModule="Watermark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUF-pS-F8Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CHA-Io-Xa8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DummyCell3" id="9DA-pw-Dow">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9DA-pw-Dow" id="IhL-ic-ZRk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CHA-Io-Xa8" firstAttribute="bottom" secondItem="Cg3-u2-Mlu" secondAttribute="bottom" id="MMQ-bt-ZTt"/>
+                            <constraint firstItem="CHA-Io-Xa8" firstAttribute="leading" secondItem="Cg3-u2-Mlu" secondAttribute="leading" id="fa6-uW-CaB"/>
+                            <constraint firstItem="CHA-Io-Xa8" firstAttribute="top" secondItem="nUF-pS-F8Q" secondAttribute="top" id="ha9-oh-yby"/>
+                            <constraint firstItem="CHA-Io-Xa8" firstAttribute="trailing" secondItem="Cg3-u2-Mlu" secondAttribute="trailing" id="lPX-Vf-q6S"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Cg3-u2-Mlu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="P4y-XT-Urv"/>
+                    <navigationItem key="navigationItem" title="Dummy" largeTitleDisplayMode="always" id="P4y-XT-Urv"/>
+                    <connections>
+                        <outlet property="tableView" destination="CHA-Io-Xa8" id="8GF-4M-fbn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54v-Q0-gCW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2767" y="113"/>
+            <point key="canvasLocation" x="2765.5999999999999" y="112.89355322338831"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="zwP-XH-g30">

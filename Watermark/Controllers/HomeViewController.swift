@@ -79,12 +79,11 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        backItem.tintColor = UIColor.black
+        navigationItem.backBarButtonItem = backItem
         if segue.identifier == "HomeToCategories" {
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            backItem.tintColor = UIColor.black
-            navigationItem.backBarButtonItem = backItem
-            
             let categoryVC = segue.destination as! CategoryViewController
             categoryVC.user = user
         } else if segue.identifier == "HomeToAddItem" {
@@ -166,6 +165,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             
             present(alert, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: "HomeToItems", sender: nil)
         }
     }
     
