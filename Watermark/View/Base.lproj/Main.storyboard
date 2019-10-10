@@ -197,24 +197,89 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sk-vf-rIr">
                                 <rect key="frame" x="16" y="16" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="cancelPressed:" destination="L6H-KK-3Ow" eventType="touchUpInside" id="7C5-8x-IFz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new todo item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPR-eq-f99">
+                                <rect key="frame" x="16" y="54" width="216" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRe-wB-Mv7">
+                                <rect key="frame" x="16" y="147" width="33" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qy-Xj-03E">
+                                <rect key="frame" x="16" y="217" width="70" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oKM-2W-CbY">
+                                <rect key="frame" x="16" y="175" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AoN-Y8-Eop">
+                                <rect key="frame" x="16" y="245" width="343" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXo-dd-k7l">
+                                <rect key="frame" x="111" y="287" width="153" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="+ Add new category">
+                                    <color key="titleColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdG-Ci-5KZ">
+                                <rect key="frame" x="16" y="335" width="71" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="8pe-Jn-xvq">
+                                <rect key="frame" x="0.0" y="363" width="375" height="216"/>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="8pe-Jn-xvq" firstAttribute="top" secondItem="qdG-Ci-5KZ" secondAttribute="bottom" constant="8" id="0yb-qX-cw6"/>
+                            <constraint firstItem="AoN-Y8-Eop" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="646-HT-kzu"/>
                             <constraint firstItem="8sk-vf-rIr" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="6Re-cA-Ua0"/>
+                            <constraint firstItem="qdG-Ci-5KZ" firstAttribute="top" secondItem="nXo-dd-k7l" secondAttribute="bottom" constant="16" id="93s-pM-0Jy"/>
+                            <constraint firstItem="oKM-2W-CbY" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="EL2-la-F9O"/>
+                            <constraint firstItem="CPR-eq-f99" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="FJA-Au-e3g"/>
                             <constraint firstItem="8sk-vf-rIr" firstAttribute="top" secondItem="b7i-Og-ZhF" secondAttribute="top" constant="16" id="ISS-DK-itg"/>
+                            <constraint firstItem="8pe-Jn-xvq" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" id="JK6-7X-p30"/>
+                            <constraint firstItem="qdG-Ci-5KZ" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="LHA-ep-JRS"/>
+                            <constraint firstItem="nXo-dd-k7l" firstAttribute="centerX" secondItem="pcN-SC-bkJ" secondAttribute="centerX" id="O56-FY-B7M"/>
+                            <constraint firstItem="oKM-2W-CbY" firstAttribute="top" secondItem="eRe-wB-Mv7" secondAttribute="bottom" constant="8" id="OSy-q8-i2F"/>
+                            <constraint firstItem="nXo-dd-k7l" firstAttribute="top" secondItem="AoN-Y8-Eop" secondAttribute="bottom" constant="8" id="TMo-eg-JbW"/>
+                            <constraint firstItem="CPR-eq-f99" firstAttribute="top" secondItem="8sk-vf-rIr" secondAttribute="bottom" constant="8" id="Z7X-NX-P03"/>
                             <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" secondItem="8sk-vf-rIr" secondAttribute="trailing" constant="311" id="pd2-hL-aWl"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" secondItem="oKM-2W-CbY" secondAttribute="trailing" constant="16" id="pfh-Id-DRE"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" secondItem="AoN-Y8-Eop" secondAttribute="trailing" constant="16" id="rQU-hb-YG9"/>
+                            <constraint firstItem="AoN-Y8-Eop" firstAttribute="top" secondItem="9Qy-Xj-03E" secondAttribute="bottom" constant="8" id="taL-ds-Qxw"/>
+                            <constraint firstItem="9Qy-Xj-03E" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="uJ8-rX-E5X"/>
+                            <constraint firstItem="8pe-Jn-xvq" firstAttribute="trailing" secondItem="b7i-Og-ZhF" secondAttribute="trailing" id="uTX-sN-sNt"/>
+                            <constraint firstItem="eRe-wB-Mv7" firstAttribute="top" secondItem="CPR-eq-f99" secondAttribute="bottom" constant="64" id="x7U-AA-6zp"/>
+                            <constraint firstItem="eRe-wB-Mv7" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="xtM-P2-v4P"/>
+                            <constraint firstItem="9Qy-Xj-03E" firstAttribute="top" secondItem="oKM-2W-CbY" secondAttribute="bottom" constant="8" id="zOA-9l-qZ5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b7i-Og-ZhF"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bpx-eZ-u29" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1830" y="484"/>
+            <point key="canvasLocation" x="1829.5999999999999" y="483.50824587706148"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="n0s-ez-SBG">
