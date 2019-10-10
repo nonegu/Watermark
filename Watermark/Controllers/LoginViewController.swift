@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
             }) {
                 register(user: newUser)
             } else {
-                print("user already exists")
+                displayAlert(title: "Register Error", with: "User already exists")
             }
         } else {
             checkUserValidation(email: email, password: password)
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
                 realm.add(user)
             }
         } catch {
-            print("Error registering user \(error)")
+            displayAlert(title: "Register Error", with: error.localizedDescription)
         }
         
         performSegue(withIdentifier: "LoginSuccess", sender: self)
@@ -81,12 +81,12 @@ class LoginViewController: UIViewController {
                 user.password == password
             })
             if user == nil {
-                print("wrong password")
+                displayAlert(title: "Login Error", with: "Wrong password")
             } else {
                 performSegue(withIdentifier: "LoginSuccess", sender: self)
             }
         } else {
-            print("user not found")
+            displayAlert(title: "Login Error", with: "User not found")
         }
     }
     
