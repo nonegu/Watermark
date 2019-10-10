@@ -29,6 +29,7 @@ class ItemsViewController: UIViewController {
         tableView.dataSource = self
         
         loadItems()
+        setNavBarTitle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +43,14 @@ class ItemsViewController: UIViewController {
             items = category!.items.sorted(byKeyPath: "dueDate")
         }
         tableView.reloadData()
+    }
+    
+    func setNavBarTitle() {
+        if category == nil {
+            navigationItem.title = "All Items"
+        } else {
+            navigationItem.title = category?.name
+        }
     }
     
 }
