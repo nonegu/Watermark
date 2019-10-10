@@ -90,5 +90,11 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! UINavigationController
+        let homeVC = destination.topViewController as! HomeViewController
+        homeVC.user = user
+    }
+    
     
 }

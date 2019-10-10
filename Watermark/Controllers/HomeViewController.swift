@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var itemTableView: UITableView!
     
     // MARK: Properties
+    var user: User!
     var categories: [String] = ["Office", "Mall", "Gym", "Pets", "Kitchen"]
     var dueDates: [Date] = [Date().addingTimeInterval(30 * 3600), Date().addingTimeInterval(21 * 3600), Date().addingTimeInterval(100 * 3600)]
     
@@ -26,6 +27,7 @@ class HomeViewController: UIViewController {
         
         setupCollectionView()
         setupTableView()
+        print(user.username)
         
     }
     
