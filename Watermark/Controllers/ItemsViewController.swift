@@ -74,5 +74,32 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         return 60
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = editAction(at: indexPath)
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete, edit])
+    }
+
+    func editAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
+            print("Edit pressed")
+            completion(true)
+        }
+        action.image = UIImage(systemName: "pencil")
+        action.backgroundColor = UIColor.gray
+
+        return action
+    }
+
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            print("Delete pressed")
+            completion(true)
+        }
+        action.image = UIImage(systemName: "trash.fill")
+        action.backgroundColor = UIColor.red
+
+        return action
+    }
     
 }
