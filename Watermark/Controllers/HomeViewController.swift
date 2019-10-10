@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
     
@@ -15,8 +16,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var itemTableView: UITableView!
     
     // MARK: Properties
-    var user: User!
-    var categories: [String] = ["Office", "Mall", "Gym", "Pets", "Kitchen"]
+    let realm = try! Realm()
+    var user: User?
+    var categories: Results<Category>?
     var dueDates: [Date] = [Date().addingTimeInterval(30 * 3600), Date().addingTimeInterval(21 * 3600), Date().addingTimeInterval(100 * 3600)]
     
     // MARK: Lifecycle Methods
@@ -27,8 +29,7 @@ class HomeViewController: UIViewController {
         
         setupCollectionView()
         setupTableView()
-        print(user.username)
-        
+        loadCategories()
     }
     
     // MARK: Actions
@@ -60,6 +61,11 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = UIColor.black
     }
     
+    func loadCategories() {
+        categories = user?.categories.sorted(byKeyPath: "name", ascending: true)
+        categoryCollectionView.reloadData()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HomeToCategories" {
             let backItem = UIBarButtonItem()
@@ -85,7 +91,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if section == 0 {
             return 1
         } else {
-            return categories.count
+            return categories?.count ?? 0
         }
     }
     
@@ -95,7 +101,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.defaultReuseIdentifier, for: indexPath) as! CategoryCell
-            cell.name.text = categories[indexPath.row]
+            cell.name.text = categories?[indexPath.row].name
             cell.completedItemsLabel.text = "1/3 Completed"
             return cell
         }
@@ -118,9 +124,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             var textField = UITextField()
             let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
             let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
-                self.categories.insert(textField.text!, at: 0)
-                DispatchQueue.main.async {
-                    self.categoryCollectionView.insertItems(at: [IndexPath(item: 0, section: 1)])
+                if let currentUser = self.user {
+                    do {
+                        try self.realm.write {
+                            let newCategory = Category()
+                            newCategory.name = textField.text!
+                            currentUser.categories.append(newCategory)
+                        }
+                        DispatchQueue.main.async {
+                            self.categoryCollectionView.reloadData()
+                        }
+                    } catch {
+                        self.displayAlert(title: "Save Error", with: error.localizedDescription)
+                    }
                 }
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
