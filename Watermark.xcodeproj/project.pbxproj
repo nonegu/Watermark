@@ -30,6 +30,7 @@
 		B6AC2B9F234E240900F65869 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2B9E234E240900F65869 /* User.swift */; };
 		B6AC2BA1234E248800F65869 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2BA0234E248800F65869 /* Item.swift */; };
 		B6AC2BA3234E24E400F65869 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC2BA2234E24E400F65869 /* Category.swift */; };
+		B6B9D745234FAD3B004299C5 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B9D744234FAD3B004299C5 /* ItemsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		B6AC2B9E234E240900F65869 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B6AC2BA0234E248800F65869 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B6AC2BA2234E24E400F65869 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		B6B9D744234FAD3B004299C5 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		E4BD0044BEA12DA7CF5AA6A8 /* Pods_Watermark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Watermark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 				B68174D1234DD6CE00B4D4FF /* CategoryViewController.swift */,
 				B64351CD234E01BE00160A68 /* AddItemViewController.swift */,
 				B69E7102234F2433006FA535 /* UIViewController+Helpers.swift */,
+				B6B9D744234FAD3B004299C5 /* ItemsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				B6609E93234CA602007C21A9 /* SceneDelegate.swift in Sources */,
 				B6609EA7234CA861007C21A9 /* HomeViewController.swift in Sources */,
 				B6609EB5234CE058007C21A9 /* AddItemCell.swift in Sources */,
+				B6B9D745234FAD3B004299C5 /* ItemsViewController.swift in Sources */,
 				B64351CE234E01BE00160A68 /* AddItemViewController.swift in Sources */,
 				B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */,
 				B6AC2BA1234E248800F65869 /* Item.swift in Sources */,
