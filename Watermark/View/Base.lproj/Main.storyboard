@@ -293,7 +293,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="addTodoPressed:" destination="L6H-KK-3Ow" eventType="touchUpInside" id="Yg0-a4-wkp"/>
+                                                    <action selector="addTodoPressed:" destination="L6H-KK-3Ow" eventType="touchUpInside" id="Jda-zG-n7E"/>
                                                 </connections>
                                             </button>
                                         </subviews>

@@ -19,6 +19,7 @@ class AddItemViewController: UIViewController {
     
     // MARK: Properties
     let realm = try! Realm()
+    var user: User?
     var category: Category?
     var allCategories: Results<Category>?
     let pickerView = UIPickerView()
@@ -49,17 +50,31 @@ class AddItemViewController: UIViewController {
     }
     
     @IBAction func cancelPressed(_ sender: UIButton) {
-        dismiss(animated: true) {
-            print("handle save here")
-        }
+        dismiss(animated: true)
     }
     
     @IBAction func addTodoPressed(_ sender: UIButton) {
+        if itemCategory.text != "" && isCategoryValid(categoryName: itemCategory.text!) {
+            let newItem = Item()
+            let parentCategory = category ?? allCategories?.first(where: { (category) -> Bool in
+                category.name == itemCategory.text!
+            })
+            do {
+                try realm.write {
+                    newItem.title = itemTitle.text!
+                    newItem.dueDate = dueDate.date
+                    parentCategory?.items.append(newItem)
+                }
+            } catch {
+                self.displayAlert(title: "Save Error", with: error.localizedDescription)
+            }
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     func setupCategoryTextField() {
         if category == nil {
-            allCategories = realm.objects(Category.self)
+            allCategories = user?.categories.sorted(byKeyPath: "name")
             itemCategory.inputView = pickerView
             itemCategory.inputAccessoryView = pickerViewToolbar
         } else {
@@ -78,6 +93,15 @@ class AddItemViewController: UIViewController {
         itemCategory.resignFirstResponder()
     }
     
+    func isCategoryValid(categoryName: String) -> Bool {
+        if self.category == nil {
+            return allCategories!.contains { (category) -> Bool in
+                category.name == categoryName
+            }
+        } else {
+            return true
+        }
+    }
     
 }
 

@@ -76,7 +76,6 @@ class HomeViewController: UIViewController {
     
     func loadTodaysItems() {
         todaysItems = realm.objects(Item.self).filter("dueDate <= %@", Date().addingTimeInterval(24*3600))
-        print(todaysItems)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,6 +87,9 @@ class HomeViewController: UIViewController {
             
             let categoryVC = segue.destination as! CategoryViewController
             categoryVC.user = user
+        } else if segue.identifier == "HomeToAddItem" {
+            let addItemVC = segue.destination as! AddItemViewController
+            addItemVC.user = user
         }
     }
     
