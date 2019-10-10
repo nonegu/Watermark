@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var itemTableView: UITableView!
     
     // MARK: Properties
-    var categories: [UIColor] = [#colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1), #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)]
+    var categories: [String] = ["Office", "Mall", "Gym", "Pets", "Kitchen"]
     var dueDates: [Date] = [Date().addingTimeInterval(30 * 3600), Date().addingTimeInterval(21 * 3600), Date().addingTimeInterval(100 * 3600)]
     
     // MARK: Lifecycle Methods
@@ -93,8 +93,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.defaultReuseIdentifier, for: indexPath) as! CategoryCell
-            cell.backgroundColor = categories[indexPath.row]
-            cell.name.text = "Home"
+            cell.name.text = categories[indexPath.row]
             cell.completedItemsLabel.text = "1/3 Completed"
             return cell
         }
@@ -114,10 +113,23 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            categories.insert(UIColor.black, at:0)
-            DispatchQueue.main.async {
-                collectionView.insertItems(at: [IndexPath(item: 0, section: 1)])
+            var textField = UITextField()
+            let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
+            let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+                self.categories.insert(textField.text!, at: 0)
+                DispatchQueue.main.async {
+                    self.categoryCollectionView.insertItems(at: [IndexPath(item: 0, section: 1)])
+                }
             }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(addAction)
+            alert.addAction(cancelAction)
+            alert.addTextField { (field) in
+                textField = field
+                textField.placeholder = "e.g. Home"
+            }
+            
+            present(alert, animated: true, completion: nil)
         }
     }
     
