@@ -15,6 +15,7 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemCategory: UITextField!
     @IBOutlet weak var dueDate: UIDatePicker!
+    @IBOutlet weak var addTodoButton: UIButton!
     
     // MARK: Properties
     let realm = try! Realm()
@@ -43,6 +44,7 @@ class AddItemViewController: UIViewController {
         pickerView.dataSource = self
         
         dueDate.minimumDate = Date().addingTimeInterval(60)
+        addTodoButton.layer.cornerRadius = 5
         print("add item presented")
     }
     
@@ -50,6 +52,9 @@ class AddItemViewController: UIViewController {
         dismiss(animated: true) {
             print("handle save here")
         }
+    }
+    
+    @IBAction func addTodoPressed(_ sender: UIButton) {
     }
     
     func setupCategoryTextField() {
