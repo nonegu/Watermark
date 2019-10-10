@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func moreTodosPressed(_ sender: UIButton) {
-        print("more todos pressed")
+        performSegue(withIdentifier: "HomeToItems", sender: self)
     }
     
     func setupCollectionView() {
