@@ -94,5 +94,10 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let itemsVC = storyboard?.instantiateViewController(identifier: "ItemsVC") as! ItemsViewController
+        itemsVC.category = categories?[indexPath.row]
+        navigationController?.pushViewController(itemsVC, animated: true)
+    }
     
 }

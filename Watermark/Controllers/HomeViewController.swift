@@ -166,7 +166,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             present(alert, animated: true, completion: nil)
         } else {
-            let itemsVC = storyboard?.instantiateViewController(identifier: "HomeToItems") as! ItemsViewController
+            let itemsVC = storyboard?.instantiateViewController(identifier: "ItemsVC") as! ItemsViewController
             itemsVC.category = categories?[indexPath.row]
             navigationController?.pushViewController(itemsVC, animated: true)
         }

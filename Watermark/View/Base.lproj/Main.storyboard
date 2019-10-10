@@ -182,17 +182,16 @@
                     <navigationItem key="navigationItem" title="Categories" largeTitleDisplayMode="always" id="TGu-3l-IvD"/>
                     <connections>
                         <outlet property="collectionView" destination="Fj6-sU-YXZ" id="vGu-A3-Fes"/>
-                        <segue destination="IvC-0s-m8i" kind="show" identifier="CategoriesToItems" id="Kgg-hj-5we"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waD-Ks-6UQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1830" y="-192"/>
+            <point key="canvasLocation" x="1830" y="-221"/>
         </scene>
         <!--Dummy-->
         <scene sceneID="XBw-ye-6s2">
             <objects>
-                <viewController storyboardIdentifier="HomeToItems" id="IvC-0s-m8i" customClass="ItemsViewController" customModule="Watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemsVC" id="IvC-0s-m8i" customClass="ItemsViewController" customModule="Watermark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUF-pS-F8Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -531,7 +530,4 @@
     <resources>
         <image name="watermark-white-logo" width="170.5" height="170.5"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Kgg-hj-5we"/>
-    </inferredMetricsTieBreakers>
 </document>
