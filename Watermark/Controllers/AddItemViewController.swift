@@ -41,6 +41,8 @@ class AddItemViewController: UIViewController {
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        
+        dueDate.minimumDate = Date().addingTimeInterval(60)
         print("add item presented")
     }
     
