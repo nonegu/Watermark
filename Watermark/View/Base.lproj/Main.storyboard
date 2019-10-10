@@ -262,9 +262,13 @@
                             <constraint firstItem="qdG-Ci-5KZ" firstAttribute="leading" secondItem="b7i-Og-ZhF" secondAttribute="leading" constant="16" id="LHA-ep-JRS"/>
                             <constraint firstItem="nXo-dd-k7l" firstAttribute="centerX" secondItem="pcN-SC-bkJ" secondAttribute="centerX" id="O56-FY-B7M"/>
                             <constraint firstItem="oKM-2W-CbY" firstAttribute="top" secondItem="eRe-wB-Mv7" secondAttribute="bottom" constant="8" id="OSy-q8-i2F"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CPR-eq-f99" secondAttribute="trailing" constant="16" id="RO4-WM-ysE"/>
                             <constraint firstItem="nXo-dd-k7l" firstAttribute="top" secondItem="AoN-Y8-Eop" secondAttribute="bottom" constant="8" id="TMo-eg-JbW"/>
                             <constraint firstItem="CPR-eq-f99" firstAttribute="top" secondItem="8sk-vf-rIr" secondAttribute="bottom" constant="8" id="Z7X-NX-P03"/>
-                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" secondItem="8sk-vf-rIr" secondAttribute="trailing" constant="311" id="pd2-hL-aWl"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9Qy-Xj-03E" secondAttribute="trailing" constant="16" id="fta-ol-aTW"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eRe-wB-Mv7" secondAttribute="trailing" constant="16" id="lMD-ZH-GpX"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qdG-Ci-5KZ" secondAttribute="trailing" constant="16" id="mn1-Gk-rdN"/>
+                            <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8sk-vf-rIr" secondAttribute="trailing" constant="16" id="pd2-hL-aWl"/>
                             <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" secondItem="oKM-2W-CbY" secondAttribute="trailing" constant="16" id="pfh-Id-DRE"/>
                             <constraint firstItem="b7i-Og-ZhF" firstAttribute="trailing" secondItem="AoN-Y8-Eop" secondAttribute="trailing" constant="16" id="rQU-hb-YG9"/>
                             <constraint firstItem="AoN-Y8-Eop" firstAttribute="top" secondItem="9Qy-Xj-03E" secondAttribute="bottom" constant="8" id="taL-ds-Qxw"/>
@@ -284,7 +288,7 @@
         <!--Login View Controller-->
         <scene sceneID="n0s-ez-SBG">
             <objects>
-                <viewController id="rhR-E7-biP" customClass="LoginViewController" customModule="Watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="rhR-E7-biP" customClass="LoginViewController" customModule="Watermark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vje-qE-MHq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
