@@ -57,15 +57,37 @@ class ItemsViewController: UIViewController {
 
 extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return items?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            let todaysItems = items?.filter("dueDate <= %@", Date().addingTimeInterval(24*3600))
+            return todaysItems?.count ?? 0
+        } else if section == 1 {
+            let tomorrowsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(48*3600))
+            return tomorrowsItems?.count ?? 0
+        } else if section == 2 {
+            let weeksItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(48*3600)).filter("dueDate <= %@", Date().addingTimeInterval(7*24*3600))
+            return weeksItems?.count ?? 0
+        } else if section == 3 {
+            let monthsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(7*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(30*24*3600))
+            return monthsItems?.count ?? 0
+        } else if section == 4 {
+            let yearsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(30*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(365*24*3600))
+            return yearsItems?.count ?? 0
+        } else {
+            let otherItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(365*24*3600))
+            return otherItems?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
-        cell.itemTextLabel.text = items?[indexPath.row].title
-        let dueHours = ((items?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
-        cell.checkmarkImageView.isHidden = !(items?[indexPath.row].done)!
+        cell.itemTextLabel.text = items?[indexPath.section].title
+        let dueHours = ((items?[indexPath.section].dueDate.timeIntervalSinceNow)! / 3600)
+        cell.checkmarkImageView.isHidden = !(items?[indexPath.section].done)!
         cell.dueDate.text = "Due in: \(round(dueHours)) hours"
         return cell
     }
@@ -100,6 +122,28 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         action.backgroundColor = UIColor.red
 
         return action
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Today"
+        } else if section == 1 {
+            return "Tomorrow"
+        } else if section == 2 {
+            return "In a week"
+        } else if section == 3 {
+            return "In a month"
+        } else if section == 4 {
+            return "In a year"
+        } else {
+            return "In the future"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
     }
     
 }
