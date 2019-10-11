@@ -34,6 +34,7 @@ class ItemsViewController: UIViewController {
         tableView.register(UINib(nibName: ItemCell.defaultReuseIdentifier, bundle: nil), forCellReuseIdentifier: ItemCell.defaultReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         
         loadItems()
         setNavBarTitle()
