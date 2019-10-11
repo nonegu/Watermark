@@ -20,7 +20,6 @@ class HomeViewController: UIViewController {
     var user: User?
     var categories: Results<Category>?
     var todaysItems: Results<Item>?
-    var dueDates: [Date] = [Date().addingTimeInterval(30 * 3600), Date().addingTimeInterval(21 * 3600), Date().addingTimeInterval(100 * 3600)]
     
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -75,7 +74,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadTodaysItems() {
-        todaysItems = realm.objects(Item.self).filter("dueDate <= %@", Date().addingTimeInterval(24*3600))
+        todaysItems = realm.objects(Item.self).filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
