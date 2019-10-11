@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3991E9DB71F44D0C8BDC450C /* Pods_Watermark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4BD0044BEA12DA7CF5AA6A8 /* Pods_Watermark.framework */; };
+		B607F6092350CC7B002C0C9D /* ItemsViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B607F6082350CC7B002C0C9D /* ItemsViewController+TableView.swift */; };
 		B64351CE234E01BE00160A68 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64351CD234E01BE00160A68 /* AddItemViewController.swift */; };
 		B6609E91234CA602007C21A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609E90234CA602007C21A9 /* AppDelegate.swift */; };
 		B6609E93234CA602007C21A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6609E92234CA602007C21A9 /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		4099EE48AC772AE56C9A81CC /* Pods-Watermark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watermark.debug.xcconfig"; path = "Target Support Files/Pods-Watermark/Pods-Watermark.debug.xcconfig"; sourceTree = "<group>"; };
 		8C4E74A1D30B49E09C92DB83 /* Pods-Watermark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watermark.release.xcconfig"; path = "Target Support Files/Pods-Watermark/Pods-Watermark.release.xcconfig"; sourceTree = "<group>"; };
+		B607F6082350CC7B002C0C9D /* ItemsViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemsViewController+TableView.swift"; sourceTree = "<group>"; };
 		B64351CD234E01BE00160A68 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		B6609E8D234CA602007C21A9 /* Watermark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watermark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6609E90234CA602007C21A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				B64351CD234E01BE00160A68 /* AddItemViewController.swift */,
 				B69E7102234F2433006FA535 /* UIViewController+Helpers.swift */,
 				B6B9D744234FAD3B004299C5 /* ItemsViewController.swift */,
+				B607F6082350CC7B002C0C9D /* ItemsViewController+TableView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				B6609EB2234CDCBF007C21A9 /* HomeViewController+TableView.swift in Sources */,
 				B6AC2BA1234E248800F65869 /* Item.swift in Sources */,
 				B6609EAA234CAB9E007C21A9 /* CategoryCell.swift in Sources */,
+				B607F6092350CC7B002C0C9D /* ItemsViewController+TableView.swift in Sources */,
 				B6AC2B9F234E240900F65869 /* User.swift in Sources */,
 				B68174D2234DD6CE00B4D4FF /* CategoryViewController.swift in Sources */,
 				B6609EAF234CCDA9007C21A9 /* AddCategoryCell.swift in Sources */,

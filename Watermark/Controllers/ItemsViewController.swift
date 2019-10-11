@@ -61,133 +61,57 @@ class ItemsViewController: UIViewController {
         }
     }
     
-}
-
-extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if items!.count > 0 {
-            return 6
-        } else {
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items!.count > 0 {
-            if section == 0 {
-                return todaysItems?.count ?? 0
-            } else if section == 1 {
-                return tomorrowsItems?.count ?? 0
-            } else if section == 2 {
-                return weeksItems?.count ?? 0
-            } else if section == 3 {
-                return monthsItems?.count ?? 0
-            } else if section == 4 {
-                return yearsItems?.count ?? 0
-            } else {
-                return otherItems?.count ?? 0
-            }
-        } else {
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
+    // MARK: Return cell data for each section
+    func cellData(for indexPath: IndexPath) -> Results<Item>? {
         var cellData = items
-        if cellData!.count > 0 {
-            if indexPath.section == 0 {
-                cellData = todaysItems
-            } else if indexPath.section == 1 {
-                cellData = tomorrowsItems
-            } else if indexPath.section == 2 {
-                cellData = weeksItems
-            } else if indexPath.section == 3 {
-                cellData = monthsItems
-            } else if indexPath.section == 4 {
-                cellData = yearsItems
-            } else {
-                cellData = otherItems
-            }
-            cell.itemTextLabel.text = cellData?[indexPath.row].title
-            let dueHours = ((cellData?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
-            cell.checkmarkImageView.isHidden = !(cellData?[indexPath.row].done)!
-            cell.dueDate.text = "Due in: \(round(dueHours)) hours"
+        if indexPath.section == 0 {
+            cellData = todaysItems
+        } else if indexPath.section == 1 {
+            cellData = tomorrowsItems
+        } else if indexPath.section == 2 {
+            cellData = weeksItems
+        } else if indexPath.section == 3 {
+            cellData = monthsItems
+        } else if indexPath.section == 4 {
+            cellData = yearsItems
         } else {
-            cell.itemTextLabel.text = "There are no todos."
-            cell.emptyCheckmark.isHidden = true
-            cell.dueDate.text = ""
+            cellData = otherItems
         }
-        return cell
+        return cellData
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! ItemCell
-        cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if items!.count > 0 {
-            let edit = editAction(at: indexPath)
-            let delete = deleteAction(at: indexPath)
-            return UISwipeActionsConfiguration(actions: [delete, edit])
+    // MARK: Return number of items in each section
+    func numberOfRows(for section: Int) -> Int {
+        if section == 0 {
+            return todaysItems?.count ?? 0
+        } else if section == 1 {
+            return tomorrowsItems?.count ?? 0
+        } else if section == 2 {
+            return weeksItems?.count ?? 0
+        } else if section == 3 {
+            return monthsItems?.count ?? 0
+        } else if section == 4 {
+            return yearsItems?.count ?? 0
         } else {
-            return nil
+            return otherItems?.count ?? 0
         }
-    }
-
-    func editAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            print("Edit pressed")
-            completion(true)
-        }
-        action.image = UIImage(systemName: "pencil")
-        action.backgroundColor = UIColor.gray
-
-        return action
-    }
-
-    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            print("Delete pressed")
-            completion(true)
-        }
-        action.image = UIImage(systemName: "trash.fill")
-        action.backgroundColor = UIColor.red
-
-        return action
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if items!.count > 0 {
-            if section == 0 {
-                return "Today"
-            } else if section == 1 {
-                return "Tomorrow"
-            } else if section == 2 {
-                return "In a week"
-            } else if section == 3 {
-                return "In a month"
-            } else if section == 4 {
-                return "In a year"
-            } else {
-                return "In the future"
-            }
+    // MARK: Return title for each section
+    func sectionTitle(for section: Int) -> String {
+        if section == 0 {
+            return "Today"
+        } else if section == 1 {
+            return "Tomorrow"
+        } else if section == 2 {
+            return "In a week"
+        } else if section == 3 {
+            return "In a month"
+        } else if section == 4 {
+            return "In a year"
         } else {
-            return nil
+            return "In the future"
         }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = UIColor.white
-        header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
     }
     
 }
