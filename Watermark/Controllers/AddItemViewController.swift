@@ -72,6 +72,37 @@ class AddItemViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addNewCategoryPressed(_ sender: UIButton) {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
+        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
+            if let currentUser = self.user {
+                do {
+                    try self.realm.write {
+                        let newCategory = Category()
+                        newCategory.name = textField.text!
+                        currentUser.categories.append(newCategory)
+                    }
+                    DispatchQueue.main.async {
+                        self.pickerView.reloadAllComponents()
+                    }
+                } catch {
+                    self.displayAlert(title: "Save Error", with: error.localizedDescription)
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { (field) in
+            textField = field
+            textField.placeholder = "e.g. Home"
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     func setupCategoryTextField() {
         if category == nil {
             allCategories = user?.categories.sorted(byKeyPath: "name")

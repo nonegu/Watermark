@@ -307,6 +307,9 @@
                                                 <state key="normal" title="+ Add new category">
                                                     <color key="titleColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="addNewCategoryPressed:" destination="L6H-KK-3Ow" eventType="touchUpInside" id="ylS-xg-4dm"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdG-Ci-5KZ">
                                                 <rect key="frame" x="16" y="336" width="71" height="20"/>
