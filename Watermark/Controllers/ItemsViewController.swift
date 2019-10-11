@@ -37,7 +37,7 @@ class ItemsViewController: UIViewController {
         tableView.separatorStyle = .none
         
         loadItems()
-        setNavBarTitle()
+        setNavBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,11 +53,25 @@ class ItemsViewController: UIViewController {
         tableView.reloadData()
     }
     
-    func setNavBarTitle() {
+    func setNavBar() {
         if category == nil {
             navigationItem.title = "All Items"
         } else {
             navigationItem.title = category?.name
+        }
+        let addItemButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
+        navigationItem.rightBarButtonItem = addItemButton
+        addItemButton.tintColor = UIColor.black
+    }
+    
+    @objc func addButtonPressed() {
+        performSegue(withIdentifier: "ItemsToAdd", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemsToAdd" {
+            let addItemVC = segue.destination as! AddItemViewController
+            addItemVC.category = self.category
         }
     }
     

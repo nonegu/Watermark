@@ -223,6 +223,7 @@
                     <navigationItem key="navigationItem" title="Dummy" largeTitleDisplayMode="always" id="P4y-XT-Urv"/>
                     <connections>
                         <outlet property="tableView" destination="CHA-Io-Xa8" id="8GF-4M-fbn"/>
+                        <segue destination="L6H-KK-3Ow" kind="presentation" identifier="ItemsToAdd" id="8Og-lW-nx6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54v-Q0-gCW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -399,6 +400,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b7i-Og-ZhF"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xuN-n4-2sm"/>
                     <connections>
                         <outlet property="addTodoButton" destination="sKI-aR-CcU" id="pg4-13-rA6"/>
                         <outlet property="dueDate" destination="8pe-Jn-xvq" id="PfJ-n1-n2g"/>
@@ -533,4 +535,7 @@
     <resources>
         <image name="watermark-white-logo" width="170.5" height="170.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8Og-lW-nx6"/>
+    </inferredMetricsTieBreakers>
 </document>
