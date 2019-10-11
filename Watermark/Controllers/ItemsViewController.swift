@@ -65,45 +65,59 @@ class ItemsViewController: UIViewController {
 extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return items?.count ?? 0
+        if items!.count > 0 {
+            return 6
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return todaysItems?.count ?? 0
-        } else if section == 1 {
-            return tomorrowsItems?.count ?? 0
-        } else if section == 2 {
-            return weeksItems?.count ?? 0
-        } else if section == 3 {
-            return monthsItems?.count ?? 0
-        } else if section == 4 {
-            return yearsItems?.count ?? 0
+        if items!.count > 0 {
+            if section == 0 {
+                return todaysItems?.count ?? 0
+            } else if section == 1 {
+                return tomorrowsItems?.count ?? 0
+            } else if section == 2 {
+                return weeksItems?.count ?? 0
+            } else if section == 3 {
+                return monthsItems?.count ?? 0
+            } else if section == 4 {
+                return yearsItems?.count ?? 0
+            } else {
+                return otherItems?.count ?? 0
+            }
         } else {
-            return otherItems?.count ?? 0
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
         var cellData = items
-        if indexPath.section == 0 {
-            cellData = todaysItems
-        } else if indexPath.section == 1 {
-            cellData = tomorrowsItems
-        } else if indexPath.section == 2 {
-            cellData = weeksItems
-        } else if indexPath.section == 3 {
-            cellData = monthsItems
-        } else if indexPath.section == 4 {
-            cellData = yearsItems
+        if cellData!.count > 0 {
+            if indexPath.section == 0 {
+                cellData = todaysItems
+            } else if indexPath.section == 1 {
+                cellData = tomorrowsItems
+            } else if indexPath.section == 2 {
+                cellData = weeksItems
+            } else if indexPath.section == 3 {
+                cellData = monthsItems
+            } else if indexPath.section == 4 {
+                cellData = yearsItems
+            } else {
+                cellData = otherItems
+            }
+            cell.itemTextLabel.text = cellData?[indexPath.row].title
+            let dueHours = ((cellData?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
+            cell.checkmarkImageView.isHidden = !(cellData?[indexPath.row].done)!
+            cell.dueDate.text = "Due in: \(round(dueHours)) hours"
         } else {
-            cellData = otherItems
+            cell.itemTextLabel.text = "There are no todos."
+            cell.emptyCheckmark.isHidden = true
+            cell.dueDate.text = ""
         }
-        cell.itemTextLabel.text = cellData?[indexPath.row].title
-        let dueHours = ((cellData?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
-        cell.checkmarkImageView.isHidden = !(cellData?[indexPath.row].done)!
-        cell.dueDate.text = "Due in: \(round(dueHours)) hours"
         return cell
     }
     
@@ -112,9 +126,13 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let edit = editAction(at: indexPath)
-        let delete = deleteAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [delete, edit])
+        if items!.count > 0 {
+            let edit = editAction(at: indexPath)
+            let delete = deleteAction(at: indexPath)
+            return UISwipeActionsConfiguration(actions: [delete, edit])
+        } else {
+            return nil
+        }
     }
 
     func editAction(at indexPath: IndexPath) -> UIContextualAction {
@@ -140,18 +158,22 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Today"
-        } else if section == 1 {
-            return "Tomorrow"
-        } else if section == 2 {
-            return "In a week"
-        } else if section == 3 {
-            return "In a month"
-        } else if section == 4 {
-            return "In a year"
+        if items!.count > 0 {
+            if section == 0 {
+                return "Today"
+            } else if section == 1 {
+                return "Tomorrow"
+            } else if section == 2 {
+                return "In a week"
+            } else if section == 3 {
+                return "In a month"
+            } else if section == 4 {
+                return "In a year"
+            } else {
+                return "In the future"
+            }
         } else {
-            return "In the future"
+            return nil
         }
     }
     
@@ -159,6 +181,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         view.tintColor = #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
     }
     
 }
