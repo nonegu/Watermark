@@ -77,11 +77,15 @@ class HomeViewController: UIViewController {
         todaysItems = realm.objects(Item.self).filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func setNavbarBackButton() {
         let backItem = UIBarButtonItem()
         backItem.title = ""
         backItem.tintColor = UIColor.black
         navigationItem.backBarButtonItem = backItem
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        setNavbarBackButton()
         if segue.identifier == "HomeToCategories" {
             let categoryVC = segue.destination as! CategoryViewController
             categoryVC.user = user
@@ -165,6 +169,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             present(alert, animated: true, completion: nil)
         } else {
+            setNavbarBackButton()
             let itemsVC = storyboard?.instantiateViewController(identifier: "ItemsVC") as! ItemsViewController
             itemsVC.category = categories?[indexPath.row]
             navigationController?.pushViewController(itemsVC, animated: true)
