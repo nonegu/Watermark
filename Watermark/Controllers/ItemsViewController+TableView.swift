@@ -44,7 +44,8 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let item = todaysItems?[indexPath.row] {
+        let cellData = self.cellData(for: indexPath.section)
+        if let item = cellData?[indexPath.row] {
             do {
                 try realm.write {
                     item.done = !item.done
