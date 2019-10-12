@@ -81,10 +81,18 @@ class CategoryViewController: UIViewController {
         isCategoryEditing = !isCategoryEditing
         if isCategoryEditing {
             navigationItem.rightBarButtonItems?.last?.title = "Done"
-            collectionView.alpha = 0.5
+            for cell in collectionView.visibleCells {
+                if let categoryCell = cell as? CategoryCell {
+                    categoryCell.shake()
+                }
+            }
         } else {
             navigationItem.rightBarButtonItems?.last?.title = "Edit"
-            collectionView.alpha = 1
+            for cell in collectionView.visibleCells {
+                if let categoryCell = cell as? CategoryCell {
+                    categoryCell.stopShaking()
+                }
+            }
         }
     }
     
