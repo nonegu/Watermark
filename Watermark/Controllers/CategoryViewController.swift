@@ -30,6 +30,10 @@ class CategoryViewController: UIViewController {
         loadCategories()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
     func setupNavBar() {
         let addCategoryButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
         navigationItem.rightBarButtonItem = addCategoryButton
@@ -38,7 +42,6 @@ class CategoryViewController: UIViewController {
     
     func loadCategories() {
         categories = user?.categories.sorted(byKeyPath: "name", ascending: true)
-        collectionView.reloadData()
     }
     
     @objc func addButtonPressed() {
