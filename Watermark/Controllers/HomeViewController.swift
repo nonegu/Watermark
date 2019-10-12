@@ -107,6 +107,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func itemAddedOrUpdated() {
+        categoryCollectionView.reloadData()
         itemTableView.reloadData()
     }
 
