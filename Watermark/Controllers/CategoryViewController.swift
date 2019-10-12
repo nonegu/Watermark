@@ -116,6 +116,9 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             cell.completedItemsLabel.text = "No todos added"
         }
         cell.status.text = status(of: category)
+        if isCategoryEditing {
+            cell.shake()
+        }
         return cell
     }
     
