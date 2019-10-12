@@ -81,7 +81,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            print("Delete pressed")
+            if let item = self.todaysItems?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        self.realm.delete(item)
+                    }
+                } catch {
+                    print("Error deleting item \(error)")
+                }
+            }
+            self.itemTableView.reloadData()
             completion(true)
         }
         action.image = UIImage(systemName: "trash.fill")

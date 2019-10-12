@@ -87,7 +87,18 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            print("Delete pressed")
+            let cellData = self.cellData(for: indexPath.section)
+            if let item = cellData?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        self.realm.delete(item)
+                    }
+                } catch {
+                    print("Error deleting item \(error)")
+                }
+            }
+            self.tableView.reloadData()
+            completion(true)
             completion(true)
         }
         action.image = UIImage(systemName: "trash.fill")
