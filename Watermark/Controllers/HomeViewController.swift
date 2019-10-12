@@ -90,6 +90,16 @@ class HomeViewController: UIViewController {
         navigationItem.backBarButtonItem = backItem
     }
     
+    func numberOfCompletedItems(in category: Category) -> Int{
+        var completedItems = 0
+        for item in category.items {
+            if item.done {
+                completedItems += 1
+            }
+        }
+        return completedItems
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         setNavbarBackButton()
         if segue.identifier == "HomeToCategories" {
@@ -132,8 +142,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.defaultReuseIdentifier, for: indexPath) as! CategoryCell
-            cell.name.text = categories?[indexPath.row].name
-            cell.completedItemsLabel.text = "1/3 Completed"
+            // if the cell is populated then there must be a category linked to it
+            // so it is safe to force unwrap
+            let category = categories![indexPath.row]
+            cell.name.text = category.name
+            if category.items.count > 0 {
+                cell.completedItemsLabel.text = "\(numberOfCompletedItems(in: category))/\(category.items.count) Completed"
+            } else {
+                cell.completedItemsLabel.text = "No todos added"
+            }
             return cell
         }
     }
