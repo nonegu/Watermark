@@ -87,17 +87,17 @@ class ItemsViewController: UIViewController {
     }
     
     // MARK: Return cell data for each section
-    func cellData(for indexPath: IndexPath) -> Results<Item>? {
+    func cellData(for section: Int) -> Results<Item>? {
         var cellData = items
-        if indexPath.section == 0 {
+        if section == 0 {
             cellData = todaysItems
-        } else if indexPath.section == 1 {
+        } else if section == 1 {
             cellData = tomorrowsItems
-        } else if indexPath.section == 2 {
+        } else if section == 2 {
             cellData = weeksItems
-        } else if indexPath.section == 3 {
+        } else if section == 3 {
             cellData = monthsItems
-        } else if indexPath.section == 4 {
+        } else if section == 4 {
             cellData = yearsItems
         } else {
             cellData = otherItems
@@ -107,19 +107,7 @@ class ItemsViewController: UIViewController {
     
     // MARK: Return number of items in each section
     func numberOfRows(for section: Int) -> Int {
-        if section == 0 {
-            return todaysItems?.count ?? 0
-        } else if section == 1 {
-            return tomorrowsItems?.count ?? 0
-        } else if section == 2 {
-            return weeksItems?.count ?? 0
-        } else if section == 3 {
-            return monthsItems?.count ?? 0
-        } else if section == 4 {
-            return yearsItems?.count ?? 0
-        } else {
-            return otherItems?.count ?? 0
-        }
+        return cellData(for: section)?.count ?? 0
     }
     
     // MARK: Return title for each section

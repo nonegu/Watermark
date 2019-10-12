@@ -30,7 +30,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
         var data = items
         if data!.count > 0 {
-            data = cellData(for: indexPath)
+            data = cellData(for: indexPath.section)
             cell.itemTextLabel.text = data?[indexPath.row].title
             let dueHours = ((data?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
             cell.checkmarkImageView.isHidden = !(data?[indexPath.row].done)!
@@ -74,7 +74,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func editAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            let cellData = self.cellData(for: indexPath)
+            let cellData = self.cellData(for: indexPath.section)
             self.itemToBeUpdated = cellData?[indexPath.row]
             self.performSegue(withIdentifier: "ItemsToAdd", sender: self)
             completion(true)
