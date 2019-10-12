@@ -30,6 +30,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = itemTableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
             let dueHours = ((todaysItems?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
             cell.itemTextLabel.text = todaysItems?[indexPath.row].title
+            cell.checkmarkImageView.isHidden = !(todaysItems?[indexPath.row].done)!
             cell.dueDate.text = "Due in: \(round(dueHours)) hours"
             return cell
         }
@@ -41,6 +42,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             itemToBeUpdated = nil
             performSegue(withIdentifier: "HomeToAddItem", sender: self)
         } else {
+            if let item = todaysItems?[indexPath.row] {
+                do {
+                    try realm.write {
+                        item.done = !item.done
+                    }
+                } catch {
+                    print("Error saving done status \(error)")
+                }
+            }
+            
             let cell = tableView.cellForRow(at: indexPath) as! ItemCell
             cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
         }
