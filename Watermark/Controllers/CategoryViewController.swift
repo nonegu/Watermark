@@ -18,6 +18,7 @@ class CategoryViewController: UIViewController {
     let realm = try! Realm()
     var user: User?
     var categories: Results<Category>?
+    var isCategoryEditing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +37,10 @@ class CategoryViewController: UIViewController {
     
     func setupNavBar() {
         let addCategoryButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
-        navigationItem.rightBarButtonItem = addCategoryButton
         addCategoryButton.tintColor = UIColor.black
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonPressed))
+        editButton.tintColor = UIColor.black
+        navigationItem.rightBarButtonItems = [addCategoryButton, editButton]
     }
     
     func loadCategories() {
@@ -72,6 +75,10 @@ class CategoryViewController: UIViewController {
         }
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func editButtonPressed() {
+        isCategoryEditing = !isCategoryEditing
     }
     
 }
