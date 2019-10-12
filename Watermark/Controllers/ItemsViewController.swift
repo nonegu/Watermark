@@ -42,6 +42,11 @@ class ItemsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        subscribeToItemNotifications(selector: #selector(itemAddedOrUpdated))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeToItemNotifications()
     }
     
     func loadItems() {
@@ -73,6 +78,10 @@ class ItemsViewController: UIViewController {
             let addItemVC = segue.destination as! AddItemViewController
             addItemVC.category = self.category
         }
+    }
+    
+    @objc func itemAddedOrUpdated() {
+        tableView.reloadData()
     }
     
     // MARK: Return cell data for each section
