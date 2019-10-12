@@ -44,6 +44,16 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let item = todaysItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print("Error saving done status \(error)")
+            }
+        }
+        
         let cell = tableView.cellForRow(at: indexPath) as! ItemCell
         cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
     }
