@@ -121,9 +121,50 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let itemsVC = storyboard?.instantiateViewController(identifier: "ItemsVC") as! ItemsViewController
-        itemsVC.category = categories?[indexPath.row]
-        navigationController?.pushViewController(itemsVC, animated: true)
+        if isCategoryEditing {
+            guard let category = categories?[indexPath.row] else {
+                print("Cannot found the category")
+                return
+            }
+            var textField = UITextField()
+            let alert = UIAlertController(title: "Update Category", message: "", preferredStyle: .alert)
+            let addAction = UIAlertAction(title: "Update", style: .default) { (action) in
+                do {
+                    try self.realm.write {
+                        category.name = textField.text!
+                    }
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                } catch {
+                    self.displayAlert(title: "Update Error", with: error.localizedDescription)
+                }
+            }
+            let cancelAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+                do {
+                    try self.realm.write {
+                        self.realm.delete(category)
+                    }
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                } catch {
+                    self.displayAlert(title: "Save Error", with: error.localizedDescription)
+                }
+            }
+            alert.addAction(addAction)
+            alert.addAction(cancelAction)
+            alert.addTextField { (field) in
+                textField = field
+                textField.text = self.categories?[indexPath.row].name
+            }
+            
+            present(alert, animated: true, completion: nil)
+        } else {
+            let itemsVC = storyboard?.instantiateViewController(identifier: "ItemsVC") as! ItemsViewController
+            itemsVC.category = categories?[indexPath.row]
+            navigationController?.pushViewController(itemsVC, animated: true)
+        }
     }
     
 }
