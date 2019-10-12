@@ -74,7 +74,9 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func editAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            print("Edit pressed")
+            let cellData = self.cellData(for: indexPath)
+            self.itemToBeUpdated = cellData?[indexPath.row]
+            self.performSegue(withIdentifier: "ItemsToAdd", sender: self)
             completion(true)
         }
         action.image = UIImage(systemName: "pencil")
