@@ -79,6 +79,13 @@ class CategoryViewController: UIViewController {
     
     @objc func editButtonPressed() {
         isCategoryEditing = !isCategoryEditing
+        if isCategoryEditing {
+            navigationItem.rightBarButtonItems?.last?.title = "Done"
+            collectionView.alpha = 0.5
+        } else {
+            navigationItem.rightBarButtonItems?.last?.title = "Edit"
+            collectionView.alpha = 1
+        }
     }
     
 }
