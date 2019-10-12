@@ -402,7 +402,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="xuN-n4-2sm"/>
                     <connections>
-                        <outlet property="addTodoButton" destination="sKI-aR-CcU" id="pg4-13-rA6"/>
+                        <outlet property="addOrUpdateTodoButton" destination="sKI-aR-CcU" id="pg4-13-rA6"/>
                         <outlet property="dueDate" destination="8pe-Jn-xvq" id="PfJ-n1-n2g"/>
                         <outlet property="itemCategory" destination="AoN-Y8-Eop" id="zdC-5v-h65"/>
                         <outlet property="itemTitle" destination="oKM-2W-CbY" id="opB-ok-wWO"/>

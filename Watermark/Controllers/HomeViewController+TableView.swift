@@ -38,6 +38,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             print("Add new todo pressed")
+            itemToBeUpdated = nil
             performSegue(withIdentifier: "HomeToAddItem", sender: self)
         } else {
             let cell = tableView.cellForRow(at: indexPath) as! ItemCell
@@ -57,7 +58,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func editAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            print("Edit pressed")
+            self.itemToBeUpdated = self.todaysItems?[indexPath.row]
+            self.performSegue(withIdentifier: "HomeToAddItem", sender: self)
             completion(true)
         }
         action.image = UIImage(systemName: "pencil")

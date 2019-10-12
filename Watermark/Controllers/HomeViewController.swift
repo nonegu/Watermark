@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     var user: User?
     var categories: Results<Category>?
     var todaysItems: Results<Item>?
+    var itemToBeUpdated: Item?
     
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -97,6 +98,7 @@ class HomeViewController: UIViewController {
         } else if segue.identifier == "HomeToAddItem" {
             let addItemVC = segue.destination as! AddItemViewController
             addItemVC.user = user
+            addItemVC.item = itemToBeUpdated
         }
     }
     

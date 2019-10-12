@@ -15,12 +15,13 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var itemTitle: UITextField!
     @IBOutlet weak var itemCategory: UITextField!
     @IBOutlet weak var dueDate: UIDatePicker!
-    @IBOutlet weak var addTodoButton: UIButton!
+    @IBOutlet weak var addOrUpdateTodoButton: UIButton!
     
     // MARK: Properties
     let realm = try! Realm()
     var user: User?
     var category: Category?
+    var item: Item?
     var allCategories: Results<Category>?
     let pickerView = UIPickerView()
     lazy var pickerViewToolbar: UIToolbar = {
@@ -39,13 +40,14 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupItemTextField()
         setupCategoryTextField()
         
         pickerView.delegate = self
         pickerView.dataSource = self
         
         dueDate.minimumDate = Date().addingTimeInterval(60)
-        addTodoButton.layer.cornerRadius = 5
+        addOrUpdateTodoButton.layer.cornerRadius = 5
         print("add item presented")
     }
     
@@ -104,6 +106,16 @@ class AddItemViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func setupItemTextField() {
+        guard let itemToBeUpdated = item else {
+            return
+        }
+        self.category = itemToBeUpdated.category.first
+        itemTitle.text = itemToBeUpdated.title
+        dueDate.date = itemToBeUpdated.dueDate
+        
+        addOrUpdateTodoButton.setTitle("Update todo", for: .normal)
+    }
     
     func setupCategoryTextField() {
         if category == nil {
