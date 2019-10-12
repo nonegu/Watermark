@@ -56,19 +56,30 @@ class AddItemViewController: UIViewController {
     }
     
     @IBAction func addTodoPressed(_ sender: UIButton) {
-        if itemCategory.text != "" && isCategoryValid(categoryName: itemCategory.text!) {
-            let newItem = Item()
-            let parentCategory = category ?? allCategories?.first(where: { (category) -> Bool in
-                category.name == itemCategory.text!
-            })
+        if addOrUpdateTodoButton.titleLabel?.text == "Add New Todo" {
+            if itemCategory.text != "" && isCategoryValid(categoryName: itemCategory.text!) {
+                let newItem = Item()
+                let parentCategory = category ?? allCategories?.first(where: { (category) -> Bool in
+                    category.name == itemCategory.text!
+                })
+                do {
+                    try realm.write {
+                        newItem.title = itemTitle.text!
+                        newItem.dueDate = dueDate.date
+                        parentCategory?.items.append(newItem)
+                    }
+                } catch {
+                    self.displayAlert(title: "Save Error", with: error.localizedDescription)
+                }
+            }
+        } else {
             do {
                 try realm.write {
-                    newItem.title = itemTitle.text!
-                    newItem.dueDate = dueDate.date
-                    parentCategory?.items.append(newItem)
+                    item?.title = itemTitle.text!
+                    item?.dueDate = dueDate.date
                 }
             } catch {
-                self.displayAlert(title: "Save Error", with: error.localizedDescription)
+                print("Error updating the item \(error)")
             }
         }
         dismiss(animated: true) {
