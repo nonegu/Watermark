@@ -37,6 +37,11 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         categoryCollectionView.reloadData()
         itemTableView.reloadData()
+        subscribeToItemNotifications(selector: #selector(itemAddedOrUpdated))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeToItemNotifications()
     }
     
     // MARK: Actions
@@ -97,6 +102,10 @@ class HomeViewController: UIViewController {
     
     @objc func logoutPressed() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func itemAddedOrUpdated() {
+        itemTableView.reloadData()
     }
 
 }

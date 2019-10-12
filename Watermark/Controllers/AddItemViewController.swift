@@ -69,7 +69,9 @@ class AddItemViewController: UIViewController {
                 self.displayAlert(title: "Save Error", with: error.localizedDescription)
             }
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            NotificationCenter.default.post(name: .didAddOrUpdateItem, object: nil)
+        }
     }
     
     @IBAction func addNewCategoryPressed(_ sender: UIButton) {
