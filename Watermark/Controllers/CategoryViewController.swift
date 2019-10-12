@@ -51,6 +51,18 @@ class CategoryViewController: UIViewController {
         return completedItems
     }
     
+    func status(of category: Category) -> String {
+        if category.items.count > 0 {
+            if numberOfCompletedItems(in: category) < category.items.count {
+                return "In Progress"
+            } else {
+                return "Completed"
+            }
+        } else {
+            return ""
+        }
+    }
+    
     @objc func addButtonPressed() {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
@@ -100,6 +112,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         } else {
             cell.completedItemsLabel.text = "No todos added"
         }
+        cell.status.text = status(of: category)
         return cell
     }
     

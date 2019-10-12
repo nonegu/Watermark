@@ -100,6 +100,18 @@ class HomeViewController: UIViewController {
         return completedItems
     }
     
+    func status(of category: Category) -> String {
+        if category.items.count > 0 {
+            if numberOfCompletedItems(in: category) < category.items.count {
+                return "In Progress"
+            } else {
+                return "Completed"
+            }
+        } else {
+            return ""
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         setNavbarBackButton()
         if segue.identifier == "HomeToCategories" {
@@ -151,6 +163,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             } else {
                 cell.completedItemsLabel.text = "No todos added"
             }
+            cell.status.text = status(of: category)
             return cell
         }
     }
