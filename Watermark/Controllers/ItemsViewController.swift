@@ -120,6 +120,7 @@ class ItemsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ItemsToAdd" {
             let addItemVC = segue.destination as! AddItemViewController
+            addItemVC.user = user
             addItemVC.category = self.category
             addItemVC.item = self.itemToBeUpdated
         }

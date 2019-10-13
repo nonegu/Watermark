@@ -176,7 +176,7 @@ extension AddItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if allCategories?.count != 0 {
-            return allCategories!.count
+            return allCategories?.count ?? 0
         } else {
             return 1
         }

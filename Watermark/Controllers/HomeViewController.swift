@@ -123,6 +123,9 @@ class HomeViewController: UIViewController {
             let addItemVC = segue.destination as! AddItemViewController
             addItemVC.user = user
             addItemVC.item = itemToBeUpdated
+        } else if segue.identifier == "HomeToItems" {
+            let itemsVC = segue.destination as! ItemsViewController
+            itemsVC.user = user
         }
     }
     
