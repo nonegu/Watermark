@@ -94,9 +94,9 @@ class HomeViewController: UIViewController {
             return
         }
         for category in userCategories {
-            let items = category.items.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
-            userItems.append(items)
+            let items = category.items.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).filter("done = %@", false).sorted(byKeyPath: "dueDate")
             if items.count > 0 {
+                userItems.append(items)
                 sectionTitles.append(category.name)
             }
         }
@@ -131,6 +131,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func itemAddedOrUpdated() {
+        loadUserItems()
         categoryCollectionView.reloadData()
         itemTableView.reloadData()
     }
