@@ -29,6 +29,13 @@ class LoginViewController: UIViewController {
         loginOrRegisterButton.layer.cornerRadius = 5
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailTextField.text = ""
+        passwordTextField.text = ""
+        rewritePasswordTextField.text = ""
+    }
+    
     @IBAction func loginOrRegisterPressed(_ sender: UIButton) {
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             print("invalid email or password")
