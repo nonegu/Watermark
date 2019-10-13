@@ -32,15 +32,16 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.itemTextLabel.text = data[indexPath.row].title
             cell.emptyCheckmark.isHidden = false
             cell.checkmarkImageView.isHidden = !(data[indexPath.row].done)
-            let dueHours = ((data[indexPath.row].dueDate.timeIntervalSinceNow) / 3600)
+            let dueDays = ((data[indexPath.row].dueDate.timeIntervalSinceNow) / (24 * 3600))
+            let dueHours = dueDays.truncatingRemainder(dividingBy: 1) * 24
             let dueMinutes = dueHours.truncatingRemainder(dividingBy: 1) * 60
             var dueText = ""
-            if dueHours > 1.0 && dueMinutes > 0.0 {
+            if dueDays > 1.0 {
+                dueText += "\(Int(dueDays)) days \(Int(dueHours)) hours \(Int(dueMinutes)) minutes"
+            } else if dueHours > 1.0 && dueMinutes > 0.0 {
                 dueText = "\(Int(dueHours)) hours \(Int(dueMinutes)) minutes"
-            } else if dueHours < 1.0 {
-                dueText = "\(Int(dueMinutes)) minutes"
             } else {
-                dueText = "Overdue!"
+                dueText = "\(Int(dueMinutes)) minutes"
             }
             cell.dueDate.text = "Due in: " + dueText
         } else {
