@@ -39,6 +39,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         categoryCollectionView.reloadData()
+        loadUserItems()
         itemTableView.reloadData()
         subscribeToItemNotifications(selector: #selector(itemAddedOrUpdated))
     }
