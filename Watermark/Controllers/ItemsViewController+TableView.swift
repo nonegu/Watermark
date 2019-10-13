@@ -46,6 +46,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.itemTextLabel.text = "There are no todos."
             cell.emptyCheckmark.isHidden = true
+            cell.checkmarkImageView.isHidden = true
             cell.dueDate.text = ""
         }
         return cell
@@ -54,6 +55,8 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellData = self.cellData(for: indexPath.section)
         if let item = cellData?[indexPath.row] {
+            let cell = tableView.cellForRow(at: indexPath) as! ItemCell
+            cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
             do {
                 try realm.write {
                     item.done = !item.done
@@ -61,11 +64,8 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
             } catch {
                 print("Error saving done status \(error)")
             }
+            loadSectionItems()
         }
-        
-        let cell = tableView.cellForRow(at: indexPath) as! ItemCell
-        cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
-        loadSectionItems()
         tableView.reloadData()
     }
     
