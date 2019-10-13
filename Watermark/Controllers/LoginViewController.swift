@@ -34,21 +34,32 @@ class LoginViewController: UIViewController {
             print("invalid email or password")
             return
         }
-        if sender.titleLabel?.text == "Register" {
-            let newUser = User()
-            newUser.username = email
-            newUser.password = password
-            
-            let users = realm.objects(User.self)
-            if !users.contains(where: { (user) -> Bool in
-                user.username == email
-            }) {
-                register(user: newUser)
-            } else {
-                displayAlert(title: "Register Error", with: "User already exists")
-            }
+        // check if the email or password area is empty
+        if email == "" || password == "" {
+            displayAlert(title: "Invalid data", with: "E-mail or password can not be empty")
         } else {
-            checkUserValidation(email: email, password: password)
+            if sender.titleLabel?.text == "Register" {
+                // check if given two passwords match
+                if passwordTextField.text == rewritePasswordTextField.text {
+                    let newUser = User()
+                    newUser.username = email
+                    newUser.password = password
+                    
+                    let users = realm.objects(User.self)
+                    // check if username is already taken
+                    if !users.contains(where: { (user) -> Bool in
+                        user.username == email
+                    }) {
+                        register(user: newUser)
+                    } else {
+                        displayAlert(title: "Register Error", with: "User already exists")
+                    }
+                } else {
+                    displayAlert(title: "Password Error", with: "Given passwords does not match.")
+                }
+            } else {
+                checkUserValidation(email: email, password: password)
+            }
         }
     }
     
