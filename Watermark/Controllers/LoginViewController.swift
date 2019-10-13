@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
             user.username == email
         }) {
             user = users.first(where: { (user) -> Bool in
-                user.password == password
+                user.username == email && user.password == password
             })
             if user == nil {
                 displayAlert(title: "Login Error", with: "Wrong password")
