@@ -21,6 +21,8 @@ class HomeViewController: UIViewController {
     var categories: Results<Category>?
     var todaysItems: Results<Item>?
     var itemToBeUpdated: Item?
+    var userItems = [Results<Item>?]()
+    var sectionTitles = [String]()
     
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -31,7 +33,7 @@ class HomeViewController: UIViewController {
         setupCollectionView()
         setupTableView()
         loadCategories()
-        loadTodaysItems()
+        loadUserItems()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +83,24 @@ class HomeViewController: UIViewController {
     
     func loadTodaysItems() {
         todaysItems = realm.objects(Item.self).filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
+    }
+    
+    func loadUserItems() {
+        userItems.removeAll()
+        sectionTitles.removeAll()
+        guard let userCategories = categories else {
+            print("could not load user categories")
+            return
+        }
+        for category in userCategories {
+            userItems.append(category.items.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate"))
+            sectionTitles.append(category.name)
+        }
+    }
+    
+    // MARK: Return cell data for each section
+    func cellData(for section: Int) -> Results<Item>? {
+        return userItems[section - 1]
     }
     
     func setNavbarBackButton() {

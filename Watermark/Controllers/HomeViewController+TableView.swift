@@ -11,14 +11,14 @@ import UIKit
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1 + userItems.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else {
-            return todaysItems?.count ?? 0
+            return cellData(for: section)?.count ?? 0
         }
     }
     
@@ -28,7 +28,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = itemTableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
-            let dueHours = ((todaysItems?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
+            let data = cellData(for: indexPath.section)
+            let dueHours = ((data?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
             let dueMinutes = dueHours.truncatingRemainder(dividingBy: 1) * 60
             var dueText = ""
             if dueHours > 1.0 && dueMinutes > 0.0 {
@@ -38,8 +39,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 dueText = "Overdue!"
             }
-            cell.itemTextLabel.text = todaysItems?[indexPath.row].title
-            cell.checkmarkImageView.isHidden = !(todaysItems?[indexPath.row].done)!
+            cell.itemTextLabel.text = data?[indexPath.row].title
+            cell.checkmarkImageView.isHidden = !(data?[indexPath.row].done)!
             cell.dueDate.text = "Due in: " + dueText
             return cell
         }
@@ -51,7 +52,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             itemToBeUpdated = nil
             performSegue(withIdentifier: "HomeToAddItem", sender: self)
         } else {
-            if let item = todaysItems?[indexPath.row] {
+            if let item = cellData(for: indexPath.section)?[indexPath.row] {
                 do {
                     try realm.write {
                         item.done = !item.done
@@ -79,7 +80,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func editAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Edit") { (action, view, completion) in
-            self.itemToBeUpdated = self.todaysItems?[indexPath.row]
+            self.itemToBeUpdated = self.cellData(for: indexPath.section)?[indexPath.row]
             self.performSegue(withIdentifier: "HomeToAddItem", sender: self)
             completion(true)
         }
@@ -91,7 +92,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            if let item = self.todaysItems?[indexPath.row] {
+            if let item = self.cellData(for: indexPath.section)?[indexPath.row] {
                 do {
                     try self.realm.write {
                         self.realm.delete(item)
@@ -116,6 +117,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return 60
         }
     }
-
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return nil
+        } else {
+            return sectionTitles[section - 1]
+        }
+    }
 
 }
