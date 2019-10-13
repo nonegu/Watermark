@@ -11,15 +11,15 @@ import UIKit
 extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if items!.count > 0 {
-            return 6
+        if sectionItems.count > 0 {
+            return sectionItems.count
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items!.count > 0 {
+        if sectionItems.count > 0 {
             return numberOfRows(for: section)
         } else {
             return 1
@@ -64,7 +64,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if items!.count > 0 {
+        if sectionItems.count > 0 {
             let edit = editAction(at: indexPath)
             let delete = deleteAction(at: indexPath)
             return UISwipeActionsConfiguration(actions: [delete, edit])
@@ -109,7 +109,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if items!.count > 0 {
+        if sectionItems.count > 0 {
             return sectionTitle(for: section)
         } else {
             return nil
@@ -117,8 +117,12 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)
         let header = view as! UITableViewHeaderFooterView
+        if header.textLabel?.text == "Overdue" {
+            view.tintColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        } else {
+            view.tintColor = #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)
+        }
         header.textLabel?.textColor = UIColor.white
         header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
     }

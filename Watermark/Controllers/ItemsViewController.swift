@@ -20,8 +20,10 @@ class ItemsViewController: UIViewController {
     var user: User?
     var items: Results<Item>?
     var itemToBeUpdated: Item?
-    var sectionTitles = ["Today", "Tomorrow", "In a week", "In a month", "In a year", "In the future"]
+    var sectionTitles = [String]()
+    var sectionItems = [Results<Item>?]()
     // defining filtered items to show in sections
+    lazy var overdueItems = items?.filter("dueDate < %@", Date()).filter("done = %@", false)
     lazy var todaysItems = items?.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
     lazy var tomorrowsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(48*3600)).sorted(byKeyPath: "dueDate")
     lazy var weeksItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(48*3600)).filter("dueDate <= %@", Date().addingTimeInterval(7*24*3600)).sorted(byKeyPath: "dueDate")
@@ -39,6 +41,7 @@ class ItemsViewController: UIViewController {
         tableView.separatorStyle = .none
         
         loadItems()
+        loadSectionItems()
         setNavBar()
     }
     
@@ -57,6 +60,38 @@ class ItemsViewController: UIViewController {
         } else {
             items = category!.items.sorted(byKeyPath: "dueDate")
         }
+    }
+    
+    func loadSectionItems() {
+        if overdueItems!.count > 0 {
+            sectionTitles.append("Overdue")
+            sectionItems.append(overdueItems)
+        }
+        if todaysItems!.count > 0 {
+            sectionTitles.append("Today")
+            sectionItems.append(todaysItems)
+        }
+        if tomorrowsItems!.count > 0 {
+            sectionTitles.append("Tomorrow")
+            sectionItems.append(tomorrowsItems)
+        }
+        if weeksItems!.count > 0 {
+            sectionTitles.append("In a week")
+            sectionItems.append(weeksItems)
+        }
+        if monthsItems!.count > 0 {
+            sectionTitles.append("In a month")
+            sectionItems.append(monthsItems)
+        }
+        if yearsItems!.count > 0 {
+            sectionTitles.append("In a year")
+            sectionItems.append(yearsItems)
+        }
+        if otherItems!.count > 0 {
+            sectionTitles.append("In the future")
+            sectionItems.append(otherItems)
+        }
+        
         tableView.reloadData()
     }
     
@@ -89,21 +124,7 @@ class ItemsViewController: UIViewController {
     
     // MARK: Return cell data for each section
     func cellData(for section: Int) -> Results<Item>? {
-        var cellData = items
-        if section == 0 {
-            cellData = todaysItems
-        } else if section == 1 {
-            cellData = tomorrowsItems
-        } else if section == 2 {
-            cellData = weeksItems
-        } else if section == 3 {
-            cellData = monthsItems
-        } else if section == 4 {
-            cellData = yearsItems
-        } else {
-            cellData = otherItems
-        }
-        return cellData
+        return sectionItems[section]
     }
     
     // MARK: Return number of items in each section
