@@ -151,7 +151,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                     self.displayAlert(title: "Update Error", with: error.localizedDescription)
                 }
             }
-            let cancelAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
                 do {
                     try self.realm.write {
                         self.realm.delete(category)
@@ -163,8 +163,8 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                     self.displayAlert(title: "Save Error", with: error.localizedDescription)
                 }
             }
+            alert.addAction(deleteAction)
             alert.addAction(addAction)
-            alert.addAction(cancelAction)
             alert.addTextField { (field) in
                 textField = field
                 textField.text = self.categories?[indexPath.row].name
