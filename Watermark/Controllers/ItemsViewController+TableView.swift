@@ -32,9 +32,18 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         if data!.count > 0 {
             data = cellData(for: indexPath.section)
             cell.itemTextLabel.text = data?[indexPath.row].title
-            let dueHours = ((data?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
             cell.checkmarkImageView.isHidden = !(data?[indexPath.row].done)!
-            cell.dueDate.text = "Due in: \(round(dueHours)) hours"
+            let dueHours = ((data?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
+            let dueMinutes = dueHours.truncatingRemainder(dividingBy: 1) * 60
+            var dueText = ""
+            if dueHours > 1.0 && dueMinutes > 0.0 {
+                dueText = "\(Int(dueHours)) hours \(Int(dueMinutes)) minutes"
+            } else if dueHours < 1.0 {
+                dueText = "\(Int(dueMinutes)) minutes"
+            } else {
+                dueText = "Overdue!"
+            }
+            cell.dueDate.text = "Due in: " + dueText
         } else {
             cell.itemTextLabel.text = "There are no todos."
             cell.emptyCheckmark.isHidden = true
