@@ -127,5 +127,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return sectionTitles[section - 1]
         }
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)
+        
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
+    }
 
 }
