@@ -74,7 +74,7 @@ class ItemsViewController: UIViewController {
     }
     
     func loadSectionItems() {
-        guard let allItems = items else {
+        guard let _ = items else {
             return
         }
         sectionItems.removeAll()
