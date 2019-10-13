@@ -32,6 +32,7 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         if data!.count > 0 {
             data = cellData(for: indexPath.section)
             cell.itemTextLabel.text = data?[indexPath.row].title
+            cell.emptyCheckmark.isHidden = false
             cell.checkmarkImageView.isHidden = !(data?[indexPath.row].done)!
             let dueHours = ((data?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
             let dueMinutes = dueHours.truncatingRemainder(dividingBy: 1) * 60
