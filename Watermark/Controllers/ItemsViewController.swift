@@ -57,13 +57,26 @@ class ItemsViewController: UIViewController {
     
     func loadItems() {
         if category == nil {
-            items = realm.objects(Item.self)
+            sectionItems.removeAll()
+            sectionTitles.removeAll()
+            guard let categories = user?.categories else {
+                return
+            }
+            for category in categories {
+                if category.items.count > 0 {
+                    sectionItems.append(category.items.sorted(byKeyPath: "dueDate"))
+                    sectionTitles.append(category.name)
+                }
+            }
         } else {
             items = category!.items.sorted(byKeyPath: "dueDate")
         }
     }
     
     func loadSectionItems() {
+        guard let allItems = items else {
+            return
+        }
         sectionItems.removeAll()
         sectionTitles.removeAll()
         if overdueItems!.count > 0 {
@@ -133,7 +146,10 @@ class ItemsViewController: UIViewController {
     
     // MARK: Return cell data for each section
     func cellData(for section: Int) -> Results<Item>? {
-        return sectionItems[section]
+        if sectionItems.count > 0 {
+            return sectionItems[section]
+        }
+        return nil
     }
     
     // MARK: Return number of items in each section

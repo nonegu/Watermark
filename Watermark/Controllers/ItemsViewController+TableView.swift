@@ -28,13 +28,11 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
-        var data = items
-        if data!.count > 0 {
-            data = cellData(for: indexPath.section)
-            cell.itemTextLabel.text = data?[indexPath.row].title
+        if let data = cellData(for: indexPath.section) {
+            cell.itemTextLabel.text = data[indexPath.row].title
             cell.emptyCheckmark.isHidden = false
-            cell.checkmarkImageView.isHidden = !(data?[indexPath.row].done)!
-            let dueHours = ((data?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
+            cell.checkmarkImageView.isHidden = !(data[indexPath.row].done)
+            let dueHours = ((data[indexPath.row].dueDate.timeIntervalSinceNow) / 3600)
             let dueMinutes = dueHours.truncatingRemainder(dividingBy: 1) * 60
             var dueText = ""
             if dueHours > 1.0 && dueMinutes > 0.0 {
