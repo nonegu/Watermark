@@ -31,12 +31,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let dueHours = ((todaysItems?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
             let dueMinutes = dueHours.truncatingRemainder(dividingBy: 1) * 60
             var dueText = ""
-            if dueHours > 0.0 && dueMinutes > 0.0 {
+            if dueHours > 1.0 && dueMinutes > 0.0 {
                 dueText = "\(Int(dueHours)) hours \(Int(dueMinutes)) minutes"
-            } else if dueHours < 0.0 {
-                dueText += "\(Int(dueMinutes)) minutes"
+            } else if dueHours < 1.0 {
+                dueText = "\(Int(dueMinutes)) minutes"
+            } else {
+                dueText = "Overdue!"
             }
-            print(dueMinutes)
             cell.itemTextLabel.text = todaysItems?[indexPath.row].title
             cell.checkmarkImageView.isHidden = !(todaysItems?[indexPath.row].done)!
             cell.dueDate.text = "Due in: " + dueText
