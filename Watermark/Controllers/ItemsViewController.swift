@@ -20,6 +20,7 @@ class ItemsViewController: UIViewController {
     var user: User?
     var items: Results<Item>?
     var itemToBeUpdated: Item?
+    var sectionTitles = ["Today", "Tomorrow", "In a week", "In a month", "In a year", "In the future"]
     // defining filtered items to show in sections
     lazy var todaysItems = items?.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
     lazy var tomorrowsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(48*3600)).sorted(byKeyPath: "dueDate")
@@ -112,19 +113,7 @@ class ItemsViewController: UIViewController {
     
     // MARK: Return title for each section
     func sectionTitle(for section: Int) -> String {
-        if section == 0 {
-            return "Today"
-        } else if section == 1 {
-            return "Tomorrow"
-        } else if section == 2 {
-            return "In a week"
-        } else if section == 3 {
-            return "In a month"
-        } else if section == 4 {
-            return "In a year"
-        } else {
-            return "In the future"
-        }
+        return sectionTitles[section]
     }
     
 }
