@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var rewritePasswordTextField: UITextField!
     @IBOutlet weak var loginOrRegisterButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -53,6 +54,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         sender.selectedSegmentIndex == 0 ? loginOrRegisterButton.setTitle("Login", for: .normal) : loginOrRegisterButton.setTitle("Register", for: .normal)
+        
+        if sender.selectedSegmentIndex == 0 {
+            rewritePasswordTextField.isHidden = true
+        } else {
+            rewritePasswordTextField.isHidden = false
+        }
     }
     
     func setupSegmentedControlTextAttributes() {

@@ -464,8 +464,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rewrite password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="95g-eF-9XZ">
+                                <rect key="frame" x="36" y="389.5" width="303" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tNS-AF-tdZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1P-eK-TOk" userLabel="LoginOrRegister">
-                                <rect key="frame" x="80" y="397.5" width="215" height="40"/>
+                                <rect key="frame" x="80" y="437.5" width="215" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oFU-bc-qsw"/>
@@ -481,12 +489,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.4431372549" green="0.33725490200000002" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="95g-eF-9XZ" firstAttribute="top" secondItem="zHI-zl-cpm" secondAttribute="bottom" constant="8" id="306-jg-RF9"/>
+                            <constraint firstItem="95g-eF-9XZ" firstAttribute="leading" secondItem="zHI-zl-cpm" secondAttribute="leading" id="3Mq-wR-Jp2"/>
                             <constraint firstItem="DhZ-T5-wk4" firstAttribute="centerX" secondItem="vje-qE-MHq" secondAttribute="centerX" id="82H-BA-QfO"/>
                             <constraint firstItem="f4j-fW-QNX" firstAttribute="trailing" secondItem="zHI-zl-cpm" secondAttribute="trailing" constant="36" id="91G-QJ-ZEi"/>
-                            <constraint firstItem="g1P-eK-TOk" firstAttribute="top" secondItem="zHI-zl-cpm" secondAttribute="bottom" constant="16" id="Bod-bA-AD0"/>
                             <constraint firstItem="f4j-fW-QNX" firstAttribute="trailing" secondItem="g1P-eK-TOk" secondAttribute="trailing" constant="80" id="CpO-Dj-dXj"/>
                             <constraint firstItem="DhZ-T5-wk4" firstAttribute="top" secondItem="oOD-VF-Ts6" secondAttribute="bottom" constant="16" id="GWW-Tu-dtS"/>
                             <constraint firstItem="bpo-hf-zLV" firstAttribute="centerX" secondItem="vje-qE-MHq" secondAttribute="centerX" id="Lzn-XH-2wH"/>
+                            <constraint firstItem="95g-eF-9XZ" firstAttribute="trailing" secondItem="zHI-zl-cpm" secondAttribute="trailing" id="MjB-fE-g0T"/>
+                            <constraint firstItem="g1P-eK-TOk" firstAttribute="top" secondItem="95g-eF-9XZ" secondAttribute="bottom" constant="8" id="NTh-bv-q57"/>
                             <constraint firstItem="zHI-zl-cpm" firstAttribute="leading" secondItem="f4j-fW-QNX" secondAttribute="leading" constant="36" id="Q35-90-fgG"/>
                             <constraint firstItem="vKm-B2-JkH" firstAttribute="top" secondItem="bpo-hf-zLV" secondAttribute="bottom" constant="8" id="R04-iI-SG5"/>
                             <constraint firstItem="g1P-eK-TOk" firstAttribute="leading" secondItem="f4j-fW-QNX" secondAttribute="leading" constant="80" id="STG-77-jge"/>
@@ -504,6 +515,7 @@
                         <outlet property="emailTextField" destination="DhZ-T5-wk4" id="DNd-5d-k1h"/>
                         <outlet property="loginOrRegisterButton" destination="g1P-eK-TOk" id="2hV-vH-t60"/>
                         <outlet property="passwordTextField" destination="zHI-zl-cpm" id="5fn-PJ-Cy9"/>
+                        <outlet property="rewritePasswordTextField" destination="95g-eF-9XZ" id="loG-8N-3L4"/>
                         <outlet property="segmentedControl" destination="oOD-VF-Ts6" id="7Vd-as-Gei"/>
                         <segue destination="11v-T7-5dS" kind="presentation" identifier="LoginSuccess" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="tJg-x6-SuJ"/>
                     </connections>
