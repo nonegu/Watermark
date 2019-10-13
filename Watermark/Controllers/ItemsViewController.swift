@@ -140,6 +140,7 @@ class ItemsViewController: UIViewController {
     }
     
     @objc func itemAddedOrUpdated() {
+        loadItems()
         loadSectionItems()
         tableView.reloadData()
     }
