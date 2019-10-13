@@ -100,8 +100,8 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
                     print("Error deleting item \(error)")
                 }
             }
+            self.loadSectionItems()
             self.tableView.reloadData()
-            completion(true)
             completion(true)
         }
         action.image = UIImage(systemName: "trash.fill")
