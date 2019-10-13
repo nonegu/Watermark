@@ -62,6 +62,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
             let cell = tableView.cellForRow(at: indexPath) as! ItemCell
             cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
+            categoryCollectionView.reloadData()
         }
     }
     
