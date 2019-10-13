@@ -57,6 +57,8 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.cellForRow(at: indexPath) as! ItemCell
         cell.checkmarkImageView.isHidden = !cell.checkmarkImageView.isHidden
+        loadSectionItems()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -120,7 +122,9 @@ extension ItemsViewController: UITableViewDelegate, UITableViewDataSource {
         let header = view as! UITableViewHeaderFooterView
         if header.textLabel?.text == "Overdue" {
             view.tintColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-        } else {
+        } else if header.textLabel?.text == "Completed" {
+            view.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }else {
             view.tintColor = #colorLiteral(red: 0.5206601024, green: 0.4249630868, blue: 0.6541044116, alpha: 1)
         }
         header.textLabel?.textColor = UIColor.white

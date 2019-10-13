@@ -24,12 +24,13 @@ class ItemsViewController: UIViewController {
     var sectionItems = [Results<Item>?]()
     // defining filtered items to show in sections
     lazy var overdueItems = items?.filter("dueDate < %@", Date()).filter("done = %@", false)
-    lazy var todaysItems = items?.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
-    lazy var tomorrowsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(48*3600)).sorted(byKeyPath: "dueDate")
-    lazy var weeksItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(48*3600)).filter("dueDate <= %@", Date().addingTimeInterval(7*24*3600)).sorted(byKeyPath: "dueDate")
-    lazy var monthsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(7*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(30*24*3600)).sorted(byKeyPath: "dueDate")
-    lazy var yearsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(30*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(365*24*3600)).sorted(byKeyPath: "dueDate")
-    lazy var otherItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(365*24*3600)).sorted(byKeyPath: "dueDate")
+    lazy var todaysItems = items?.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate").filter("done = %@", false)
+    lazy var tomorrowsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(48*3600)).sorted(byKeyPath: "dueDate").filter("done = %@", false)
+    lazy var weeksItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(48*3600)).filter("dueDate <= %@", Date().addingTimeInterval(7*24*3600)).sorted(byKeyPath: "dueDate").filter("done = %@", false)
+    lazy var monthsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(7*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(30*24*3600)).sorted(byKeyPath: "dueDate").filter("done = %@", false)
+    lazy var yearsItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(30*24*3600)).filter("dueDate <= %@", Date().addingTimeInterval(365*24*3600)).sorted(byKeyPath: "dueDate").filter("done = %@", false)
+    lazy var otherItems = items?.filter("dueDate >= %@", Date().addingTimeInterval(365*24*3600)).sorted(byKeyPath: "dueDate").filter("done = %@", false)
+    lazy var completedItems = items?.filter("done = %@", true)
     
     // MARK: Lifecycle methods
     override func viewDidLoad() {
@@ -63,6 +64,8 @@ class ItemsViewController: UIViewController {
     }
     
     func loadSectionItems() {
+        sectionItems.removeAll()
+        sectionTitles.removeAll()
         if overdueItems!.count > 0 {
             sectionTitles.append("Overdue")
             sectionItems.append(overdueItems)
@@ -90,6 +93,10 @@ class ItemsViewController: UIViewController {
         if otherItems!.count > 0 {
             sectionTitles.append("In the future")
             sectionItems.append(otherItems)
+        }
+        if completedItems!.count > 0 {
+            sectionTitles.append("Completed")
+            sectionItems.append(completedItems)
         }
         
         tableView.reloadData()
