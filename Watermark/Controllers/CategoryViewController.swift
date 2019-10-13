@@ -154,6 +154,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
                 do {
                     try self.realm.write {
+                        self.realm.delete(category.items)
                         self.realm.delete(category)
                     }
                     DispatchQueue.main.async {
