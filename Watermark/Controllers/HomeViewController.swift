@@ -93,8 +93,11 @@ class HomeViewController: UIViewController {
             return
         }
         for category in userCategories {
-            userItems.append(category.items.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate"))
-            sectionTitles.append(category.name)
+            let items = category.items.filter("dueDate >= %@", Date()).filter("dueDate <= %@", Date().addingTimeInterval(24*3600)).sorted(byKeyPath: "dueDate")
+            userItems.append(items)
+            if items.count > 0 {
+                sectionTitles.append(category.name)
+            }
         }
     }
     
