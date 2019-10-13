@@ -71,6 +71,11 @@ class AddItemViewController: UIViewController {
                 } catch {
                     self.displayAlert(title: "Save Error", with: error.localizedDescription)
                 }
+                dismiss(animated: true) {
+                    NotificationCenter.default.post(name: .didAddOrUpdateItem, object: nil)
+                }
+            } else {
+                displayAlert(title: "Invalid Category", with: "Please select a category from the list")
             }
         } else {
             do {
@@ -81,9 +86,9 @@ class AddItemViewController: UIViewController {
             } catch {
                 print("Error updating the item \(error)")
             }
-        }
-        dismiss(animated: true) {
-            NotificationCenter.default.post(name: .didAddOrUpdateItem, object: nil)
+            dismiss(animated: true) {
+                NotificationCenter.default.post(name: .didAddOrUpdateItem, object: nil)
+            }
         }
     }
     
@@ -140,8 +145,10 @@ class AddItemViewController: UIViewController {
     }
     
     @objc func toolbarDoneButtonPressed() {
-        let row = pickerView.selectedRow(inComponent: 0)
-        itemCategory.text = allCategories![row].name
+        if allCategories!.count > 0 {
+            let row = pickerView.selectedRow(inComponent: 0)
+            itemCategory.text = allCategories![row].name
+        }
         itemCategory.resignFirstResponder()
     }
     
@@ -168,7 +175,11 @@ extension AddItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return allCategories?.count ?? 1
+        if allCategories!.count > 0 {
+            return allCategories!.count
+        } else {
+            return 1
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -180,7 +191,11 @@ extension AddItemViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        itemCategory.text = allCategories![row].name
+        if allCategories?.count == 0 {
+            itemCategory.text = "No categories added yet"
+        } else {
+            itemCategory.text = allCategories![row].name
+        }
     }
     
     
