@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         } catch {
             displayAlert(title: "Register Error", with: error.localizedDescription)
         }
-        
+        self.user = user
         performSegue(withIdentifier: "LoginSuccess", sender: self)
     }
     
