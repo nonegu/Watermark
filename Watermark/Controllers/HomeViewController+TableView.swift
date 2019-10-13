@@ -29,9 +29,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = itemTableView.dequeueReusableCell(withIdentifier: ItemCell.defaultReuseIdentifier, for: indexPath) as! ItemCell
             let dueHours = ((todaysItems?[indexPath.row].dueDate.timeIntervalSinceNow)! / 3600)
+            let dueMinutes = dueHours.truncatingRemainder(dividingBy: 1) * 60
+            var dueText = ""
+            if dueHours > 0.0 && dueMinutes > 0.0 {
+                dueText = "\(Int(dueHours)) hours \(Int(dueMinutes)) minutes"
+            } else if dueHours < 0.0 {
+                dueText += "\(Int(dueMinutes)) minutes"
+            }
+            print(dueMinutes)
             cell.itemTextLabel.text = todaysItems?[indexPath.row].title
             cell.checkmarkImageView.isHidden = !(todaysItems?[indexPath.row].done)!
-            cell.dueDate.text = "Due in: \(round(dueHours)) hours"
+            cell.dueDate.text = "Due in: " + dueText
             return cell
         }
     }
