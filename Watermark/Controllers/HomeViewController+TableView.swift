@@ -87,7 +87,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             completion(true)
         }
         action.image = UIImage(systemName: "pencil")
-        action.backgroundColor = UIColor.gray
+        action.backgroundColor = #colorLiteral(red: 0.4510940909, green: 0.3475753069, blue: 0.6542472243, alpha: 1)
 
         return action
     }
